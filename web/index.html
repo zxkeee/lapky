@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Лапки — притулки для тварин Києва та області</title>
+<meta name="description" content="Притулки для тварин Києва та області і те, чого їм бракує саме зараз.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<style>
+:root{
+  --black:#000; --text:#3B3B3B; --muted:#8C8C8C; --hair:#EBEBEB; --soft:#F5F5F4; --white:#FFF;
+  --red:#E5484D; --orange:#F2A33A; --neutral:#BDBDBD; --green:#30A46C;
+  --font:"Onest", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --panel:460px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font:400 15px/1.55 var(--font);color:var(--text);background:var(--white);
+  display:grid;grid-template-columns:var(--panel) minmax(0,1fr);height:100%;
+  padding-top:env(safe-area-inset-top,0px);-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 0}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--black);outline-offset:3px;border-radius:4px}
+
+/* ---------- панель ---------- */
+aside{display:flex;flex-direction:column;min-height:0;min-width:0;border-right:1px solid var(--hair);background:var(--white)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:28px 36px 0}
+.mark{font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--black);text-decoration:none}
+.top a.bot{font-size:13px;color:var(--muted);text-decoration:none}
+.top a.bot:hover{color:var(--black)}
+.intro{padding:40px 36px 28px}
+.intro h1{margin:0;font-weight:500;font-size:30px;line-height:1.18;letter-spacing:-.025em;color:var(--black);max-width:15em}
+.intro h1 span{color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:22px}
+.legend button{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);padding:2px 0}
+.legend button[aria-pressed="true"]{color:var(--black)}
+.legend button:hover{color:var(--black)}
+.legend b{font-weight:500;color:var(--black);font-variant-numeric:tabular-nums}
+
+.dot{width:8px;height:8px;border-radius:50%;flex:none;display:inline-block}
+.dot.red{background:var(--red)} .dot.orange{background:var(--orange)} .dot.green{background:var(--green)}
+.dot.white{background:var(--white);box-shadow:inset 0 0 0 1.5px var(--neutral)}
+
+.tools{padding:0 36px;border-bottom:1px solid var(--hair)}
+.search{display:block;width:100%;font:inherit;font-size:15px;color:var(--black);border:0;border-bottom:1px solid var(--hair);
+  padding:10px 0;background:transparent;border-radius:0}
+.search::placeholder{color:var(--muted)}
+.search:focus{outline:none;border-bottom-color:var(--black)}
+.tabs{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;padding:16px 0 0}
+.tabs::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;font-size:14px;color:var(--muted);padding:0 0 14px;border-bottom:1.5px solid transparent;display:inline-flex;align-items:center;gap:7px}
+.tab:hover{color:var(--black)}
+.tab[aria-pressed="true"]{color:var(--black);border-bottom-color:var(--black)}
+.tab i{width:7px;height:7px;border-radius:2px;display:inline-block}
+.subtabs{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 16px}
+.subtabs[hidden]{display:none}
+.pill{font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--hair);color:var(--text)}
+.pill:hover{border-color:var(--black)}
+.pill[aria-pressed="true"]{background:var(--black);border-color:var(--black);color:var(--white)}
+
+#content{flex:1;overflow:auto;min-height:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+aside.detail .intro, aside.detail .tools{display:none}
+
+/* список */
+ul.list{list-style:none;margin:0;padding:0 36px 40px}
+.row{width:100%;text-align:left;display:grid;grid-template-columns:8px 1fr auto;gap:2px 16px;align-items:baseline;
+  padding:18px 0;border-bottom:1px solid var(--hair)}
+.row .dot{grid-column:1;grid-row:1 / span 2;align-self:center}
+.row strong{grid-column:2;grid-row:1;font-weight:500;font-size:16px;color:var(--black);letter-spacing:-.01em}
+.row small{grid-column:2;grid-row:2;font-size:13px;color:var(--muted)}
+.row em{grid-column:3;grid-row:1 / span 2;align-self:center;font-style:normal;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.row:hover strong{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.empty{padding:28px 36px;color:var(--muted)}
+.empty button{color:var(--black);text-decoration:underline;text-underline-offset:3px}
+
+/* картка */
+.card{padding:8px 36px 56px}
+.back{font-size:14px;color:var(--muted);margin:20px 0 40px;display:inline-block}
+.back:hover{color:var(--black)}
+.status{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text)}
+.card h2{margin:12px 0 8px;font-weight:600;font-size:38px;line-height:1.08;letter-spacing:-.03em;color:var(--black)}
+.addr{margin:0 0 28px;color:var(--muted);max-width:30em}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-bottom:12px}
+.btn{display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:999px;font-size:14px;font-weight:500;text-decoration:none;
+  background:var(--black);color:var(--white);border:1px solid var(--black)}
+.btn.line{background:transparent;color:var(--black);border-color:var(--hair)}
+.btn.line:hover{border-color:var(--black)}
+.links{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 44px;font-size:14px}
+.links a{color:var(--muted);text-decoration:none}
+.links a:hover{color:var(--black)}
+.need{padding:22px 0;border-top:1px solid var(--hair)}
+.need h3{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:13px;font-weight:500;color:var(--black)}
+.need h3 i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.need h3 span{color:var(--muted);font-weight:400;font-variant-numeric:tabular-nums}
+.need ul{list-style:none;margin:0;padding:0}
+.need li{padding:5px 0;color:var(--text)}
+.pay{margin-top:12px;background:var(--soft);border-radius:14px;padding:16px 18px}
+.pay .num{display:block;font-size:15px;color:var(--black);font-variant-numeric:tabular-nums;letter-spacing:.02em;word-break:break-all}
+.pay small{display:block;margin-top:4px;color:var(--muted);font-size:13px}
+.pay button,.pay a{margin-top:12px;font-size:13px;font-weight:500;color:var(--black);text-decoration:underline;text-underline-offset:3px}
+.closed{padding:22px 0;border-top:1px solid var(--hair);color:var(--text)}
+.meta{margin-top:36px;padding-top:20px;border-top:1px solid var(--hair);font-size:13px;color:var(--muted)}
+.meta a{color:var(--muted)}
+
+/* ---------- карта ---------- */
+#map{height:100%;background:#F2F2F2}
+.leaflet-tile-pane{filter:grayscale(1) contrast(.92) brightness(1.04)}
+.leaflet-container{font-family:var(--font)}
+.leaflet-control-zoom{border:0 !important;box-shadow:0 1px 2px rgba(0,0,0,.08),0 4px 14px rgba(0,0,0,.06) !important;border-radius:12px !important;overflow:hidden}
+.leaflet-control-zoom a{width:38px !important;height:38px !important;line-height:38px !important;color:var(--black) !important;border-color:var(--hair) !important}
+.leaflet-control-attribution{font-size:10px;background:rgba(255,255,255,.7) !important}
+.pin{width:16px;height:16px;border-radius:50%;border:3px solid var(--white);box-shadow:0 1px 4px rgba(0,0,0,.25);position:relative;transition:transform .15s}
+.pin.red{background:var(--red)} .pin.orange{background:var(--orange)} .pin.green{background:var(--green)}
+.pin.white{background:var(--white);box-shadow:0 0 0 1.5px var(--neutral),0 1px 4px rgba(0,0,0,.2)}
+.pin:hover{transform:scale(1.25)}
+.pin.red::after{content:"";position:absolute;inset:-9px;border-radius:50%;background:var(--red);opacity:.18;animation:halo 2.6s ease-out infinite;z-index:-1}
+.pin.on{transform:scale(1.5);box-shadow:0 0 0 2px var(--black),0 2px 8px rgba(0,0,0,.3)}
+@keyframes halo{0%{transform:scale(.6);opacity:.3}100%{transform:scale(1.6);opacity:0}}
+.tip{font:500 13px var(--font);color:var(--black);background:var(--white);border:0;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.12);padding:6px 10px}
+.tip::before{display:none}
+@media (prefers-reduced-motion:reduce){.pin.red::after{animation:none}.pin{transition:none}}
+
+@media (max-width:820px){
+  body{grid-template-columns:minmax(0,1fr);grid-template-rows:40vh minmax(0,1fr)}
+  #map{grid-row:1} aside{grid-row:2;border-right:0;border-top:1px solid var(--hair)}
+  .top{padding:20px 22px 0} .intro{padding:22px 22px 18px} .intro h1{font-size:23px}
+  .tools,.card{padding-left:22px;padding-right:22px} ul.list{padding:0 22px 32px}
+  .card h2{font-size:30px} .back{margin:14px 0 24px} .empty{padding:24px 22px}
+}
+</style>
+</head>
+<body>
+<aside aria-label="Притулки">
+  <div class="top">
+    <a class="mark" href="./">Лапки</a>
+    <a class="bot" id="bot" href="#" target="_blank" rel="noopener" hidden>Бот у Telegram</a>
+  </div>
+  <section class="intro">
+    <h1 id="headline">Притулки для тварин Києва та області.</h1>
+    <div class="legend" id="legend" role="group" aria-label="Фільтр за терміновістю"></div>
+  </section>
+  <div class="tools">
+    <input class="search" id="q" type="search" placeholder="Пошук за назвою, містом або адресою" aria-label="Пошук притулку" autocomplete="off">
+    <div class="tabs" id="tabs" role="group" aria-label="Чим допомогти"></div>
+    <div class="subtabs" id="subs" role="group" aria-label="Вид корму" hidden></div>
+  </div>
+  <div id="content" aria-live="polite"></div>
+</aside>
+<main id="map" aria-label="Карта притулків"></main>
+
+<script src="vendor/leaflet/leaflet.js"></script>
+<script>
+const state = {meta:null, all:[], shelters:[], category:null, sub:null, urgency:null, q:"", selected:null};
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const short = u => u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+const plural = (n, one, few, many) => { const m10 = n % 10, m100 = n % 100;
+  return m10 === 1 && m100 !== 11 ? one : m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14) ? few : many; };
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const map = L.map("map", {zoomControl:false, attributionControl:true}).setView([50.45, 30.52], 9);
+L.control.zoom({position:"bottomright"}).addTo(map);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+const layer = L.layerGroup().addTo(map);
+
+async function api(path){ const r = await fetch(path); if(!r.ok) throw new Error(r.status); return r.json(); }
+const urg = key => state.meta.urgency.find(u => u.key === key);
+const cat = key => state.meta.categories.find(c => c.key === key);
+
+function headline(){
+  const n = state.all.length, red = state.all.filter(s => s.urgency_level === "red").length,
+        orange = state.all.filter(s => s.urgency_level === "orange").length;
+  let tail = "";
+  if(red) tail = ` ${red} ${plural(red, "потребує", "потребують", "потребують")} допомоги просто зараз.`;
+  else if(orange) tail = ` ${orange} — з високими потребами.`;
+  $("#headline").innerHTML = `${n} ${plural(n, "притулок", "притулки", "притулків")} Києва та області.<span>${esc(tail)}</span>`;
+  $("#legend").innerHTML = "";
+  state.meta.urgency.forEach(u => {
+    const count = state.all.filter(s => s.urgency_level === u.key).length;
+    const b = document.createElement("button");
+    b.type = "button"; b.setAttribute("aria-pressed", state.urgency === u.key);
+    b.innerHTML = `<span class="dot ${u.key}"></span>${esc(u.title)} <b>${count}</b>`;
+    b.onclick = () => { state.urgency = state.urgency === u.key ? null : u.key; headline(); load(); };
+    $("#legend").append(b);
+  });
+}
+
+function filters(){
+  const tabs = $("#tabs"); tabs.innerHTML = "";
+  const tab = (label, on, fn, color) => { const b = document.createElement("button"); b.type = "button"; b.className = "tab";
+    b.setAttribute("aria-pressed", on); b.innerHTML = (color ? `<i style="background:${color}"></i>` : "") + esc(label); b.onclick = fn; tabs.append(b); };
+  tab("Усі", !state.category, () => setFilter(null, null));
+  state.meta.categories.forEach(c => tab(c.title, state.category === c.key,
+    () => setFilter(state.category === c.key ? null : c.key, null), c.color));
+  const subs = $("#subs"); subs.hidden = state.category !== "food"; subs.innerHTML = "";
+  if(!subs.hidden){
+    const pill = (label, on, fn) => { const b = document.createElement("button"); b.type = "button"; b.className = "pill";
+      b.setAttribute("aria-pressed", on); b.textContent = label; b.onclick = fn; subs.append(b); };
+    pill("Весь корм і ліки", !state.sub, () => setFilter("food", null));
+    cat("food").subcategories.forEach(s => pill(s.title, state.sub === s.key, () => setFilter("food", s.key)));
+  }
+}
+function setFilter(c, s){ state.category = c; state.sub = s; filters(); load(); }
+
+async function load(){
+  const p = new URLSearchParams({sort:"urgency"});
+  if(state.category) p.set("category", state.category);
+  if(state.sub) p.set("subcategory", state.sub);
+  if(state.urgency) p.set("urgency", state.urgency);
+  if(state.q) p.set("q", state.q);
+  try{ state.shelters = await api("/api/shelters?" + p); }
+  catch{ $("#content").innerHTML = `<p class="empty">Сервер не відповідає. Запустіть його й оновіть сторінку.</p>`; return; }
+  markers();
+  const s = state.selected && state.shelters.find(x => x.id === state.selected);
+  s ? card(s) : list();
+}
+
+function markers(){
+  layer.clearLayers();
+  state.shelters.forEach(s => {
+    const icon = L.divIcon({className:"", iconSize:[16,16], iconAnchor:[8,8],
+      html:`<div class="pin ${s.urgency_level}${s.id === state.selected ? " on" : ""}"></div>`});
+    L.marker([s.lat, s.lng], {icon, alt:s.name, keyboard:true,
+      zIndexOffset: s.id === state.selected ? 1000 : (3 - state.meta.urgency.findIndex(u => u.key === s.urgency_level)) * 100})
+      .bindTooltip(esc(s.name), {direction:"top", offset:[0,-10], className:"tip"})
+      .on("click", () => select(s.id)).addTo(layer);
+  });
+}
+
+function needCount(s){ return s.needs.length; }
+
+function list(){
+  document.querySelector("aside").classList.remove("detail");
+  if(!state.shelters.length){
+    $("#content").innerHTML = `<p class="empty">Нічого не знайдено за цими фільтрами. <button type="button" id="reset">Скинути фільтри</button></p>`;
+    $("#reset").onclick = () => { Object.assign(state, {category:null, sub:null, urgency:null, q:""}); $("#q").value = ""; headline(); filters(); load(); };
+    return;
+  }
+  $("#content").innerHTML = `<ul class="list">${state.shelters.map(s => {
+    const n = needCount(s);
+    return `<li><button type="button" class="row" data-id="${s.id}" aria-label="${esc(s.name)}, ${esc(urg(s.urgency_level).title)}">
+      <span class="dot ${s.urgency_level}"></span>
+      <strong>${esc(s.name)}</strong>
+      <em>${n ? n + " " + plural(n, "потреба", "потреби", "потреб") : "без потреб"}</em>
+      <small>${esc([s.city, s.district].filter(Boolean).join(", "))}</small>
+    </button></li>`; }).join("")}</ul>`;
+  $("#content").querySelectorAll(".row").forEach(b => b.onclick = () => select(+b.dataset.id));
+}
+
+function card(s){
+  document.querySelector("aside").classList.add("detail");
+  const u = urg(s.urgency_level);
+  const sections = state.meta.categories.map(c => {
+    const items = s.needs.filter(n => n.category === c.key);
+    let pay = "";
+    if(c.key === "finance" && s.requisites){
+      pay = /^https?:/.test(s.requisites)
+        ? `<div class="pay"><span class="num">${esc(short(s.requisites))}</span>${s.bank ? `<small>${esc(s.bank)}</small>` : ""}
+           <a href="${esc(s.requisites)}" target="_blank" rel="noopener">Задонатити</a></div>`
+        : `<div class="pay"><span class="num">${esc(s.requisites)}</span>${s.bank ? `<small>${esc(s.bank)}</small>` : ""}
+           <button type="button" data-copy="${esc(s.requisites)}">Скопіювати реквізити</button></div>`;
+    }
+    if(!items.length && !pay) return "";
+    return `<section class="need"><h3><i style="background:${c.color}"></i>${esc(c.title)}${items.length ? ` <span>${items.length}</span>` : ""}</h3>
+      ${items.length ? `<ul>${items.map(n => `<li>${esc(n.text)}</li>`).join("")}</ul>` : ""}${pay}</section>`;
+  }).join("");
+  const phone = s.phone ? `<a class="btn" href="tel:${esc(s.phone.replace(/[^+\d]/g, ""))}">Подзвонити</a>` : "";
+  const route = `<a class="btn ${phone ? "line" : ""}" href="https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lng}" target="_blank" rel="noopener">Маршрут</a>`;
+  const bot = state.meta.bot_url ? `<a href="${esc(state.meta.bot_url)}" target="_blank" rel="noopener">Відкрити в Telegram</a>` : "";
+  $("#content").innerHTML = `<article class="card">
+    <button type="button" class="back" id="back">← Усі притулки</button>
+    <div class="status"><span class="dot ${s.urgency_level}"></span>${esc(u.title)}</div>
+    <h2>${esc(s.name)}</h2>
+    <p class="addr">${esc([s.city, s.district, s.address].filter(Boolean).join(", "))}</p>
+    <div class="actions">${phone}${route}</div>
+    <div class="links">${s.phone ? `<span>${esc(s.phone)}${s.contact_person ? ", " + esc(s.contact_person) : ""}</span>` : ""}
+      ${s.social_links.map(l => `<a href="${esc(l)}" target="_blank" rel="noopener">${esc(short(l))}</a>`).join("")}${bot}</div>
+    ${sections || `<p class="closed">Зараз усі потреби закриті.</p>`}
+    <p class="meta">${s.verified_at ? "Дані перевірено " + esc(new Date(s.verified_at).toLocaleDateString("uk-UA", {day:"numeric", month:"long", year:"numeric"})) + ". " : ""}
+      ${s.source_url && /^https?:/.test(s.source_url) ? `<a href="${esc(s.source_url)}" target="_blank" rel="noopener">Джерело</a>` : ""}</p>
+  </article>`;
+  $("#back").onclick = () => select(null);
+  $("#content").querySelectorAll("[data-copy]").forEach(b => b.onclick = async () => {
+    try{ await navigator.clipboard.writeText(b.dataset.copy); b.textContent = "Скопійовано"; }
+    catch{ b.textContent = "Виділіть номер і скопіюйте вручну"; }
+  });
+  $("#content").scrollTop = 0;
+}
+
+function select(id){
+  state.selected = id;
+  const url = new URL(location); id ? url.searchParams.set("shelter", id) : url.searchParams.delete("shelter");
+  history.replaceState(null, "", url);
+  markers();
+  if(id === null) return list();
+  const s = state.shelters.find(x => x.id === id);
+  if(!s) return list();
+  map.flyTo([s.lat, s.lng], Math.max(map.getZoom(), 12), {duration: reduced ? 0 : .7});
+  card(s);
+}
+
+let t;
+$("#q").addEventListener("input", e => { clearTimeout(t); t = setTimeout(() => { state.q = e.target.value.trim(); load(); }, 250); });
+document.addEventListener("keydown", e => { if(e.key === "Escape" && state.selected) select(null); });
+
+(async () => {
+  try{ [state.meta, state.all] = await Promise.all([api("/api/meta"), api("/api/shelters")]); }
+  catch{ $("#content").innerHTML = `<p class="empty">Сервер не відповідає. Запустіть його й оновіть сторінку.</p>`; return; }
+  if(state.meta.bot_url){ $("#bot").href = state.meta.bot_url; $("#bot").hidden = false; }
+  headline(); filters();
+  await load();
+  const deep = +new URLSearchParams(location.search).get("shelter");
+  if(deep && state.shelters.some(s => s.id === deep)) select(deep);
+  else if(state.all.length) map.fitBounds(L.latLngBounds(state.all.map(s => [s.lat, s.lng])), {padding:[40,40], maxZoom:11});
+  setInterval(async () => { try{ state.all = await api("/api/shelters"); headline(); }catch{} load(); }, 60000);
+})();
+</script>
+</body>
+</html>
