@@ -1,4 +1,3 @@
-"""Волонтерські завдання притулків (вигул, транспорт, прибирання…) і запис на них."""
 import sqlite3
 from html import escape
 from typing import Optional
@@ -29,7 +28,6 @@ def list_tasks(
     limit: int = Query(50, ge=1, le=200),
     conn: sqlite3.Connection = Depends(get_db),
 ):
-    """Відкриті завдання, що ще не почалися (найближчі за часом або за відстанню)."""
     where, params = ["t.status = 'open'", "t.starts_at >= ?", "s.status = 'published'"], [repo.now_local()]
     if oblast:
         where.append("s.oblast = ?")
@@ -110,8 +108,6 @@ def _notify_signups(conn: sqlite3.Connection, task_id: int, text: str) -> None:
         (task_id,))]
     notify.enqueue(conn, ids, text)
 
-
-# ---------- запис волонтерів ----------
 
 @router.post("/tasks/{task_id}/signup", response_model=Task, status_code=201, tags=["volunteer"])
 def signup(task_id: int, actor: Actor = Depends(require_user), conn: sqlite3.Connection = Depends(get_db)):

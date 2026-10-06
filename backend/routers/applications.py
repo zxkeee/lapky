@@ -1,4 +1,3 @@
-"""Заявки: «додати мій притулок» і «це мій притулок» (claim). Модерує адміністратор."""
 import json
 import sqlite3
 from datetime import date

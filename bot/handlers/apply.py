@@ -1,4 +1,3 @@
-"""Заявки: «Додати притулок» (покрокова анкета) і «Це мій притулок»."""
 import re
 from html import escape
 
@@ -163,8 +162,6 @@ async def step_use_buttons(m: Message):
     await m.answer("Скористайтеся кнопками вище 👆 або /cancel, щоб скасувати.")
 
 
-# ---------- «Це мій притулок» ----------
-
 CLAIM_TEXT = ("🔑 <b>Це ваш притулок?</b>\n\nАдміністратор перевірить, що ви його представляєте "
               "(може зв'язатися з вами), і відкриє доступ до керування: потреби, збори, соцмережі, завдання.")
 
@@ -177,7 +174,6 @@ def _claim_kb(sid: int) -> InlineKeyboardMarkup:
 
 
 async def ask_claim(m: Message, sid: int) -> None:
-    """Deep-link з вебкарти: ?start=claim_<id>."""
     await m.answer(CLAIM_TEXT, reply_markup=_claim_kb(sid))
 
 

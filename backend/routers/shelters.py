@@ -1,4 +1,3 @@
-"""Притулки: читання для карти й бота, редагування адміном або менеджером притулку."""
 import sqlite3
 from typing import Literal, Optional
 
@@ -25,7 +24,6 @@ def health():
 
 @router.get("/meta", tags=["read"])
 def meta():
-    """Довідники: терміновість, категорії потреб, області, типи посилань і зборів."""
     return {
         "urgency": URGENCY,
         "categories": CATEGORIES,
@@ -38,7 +36,6 @@ def meta():
 
 @router.get("/oblasts", tags=["read"])
 def oblasts(conn: sqlite3.Connection = Depends(get_db)):
-    """Області з кількістю опублікованих притулків і критичних серед них."""
     counts = {r["oblast"]: (r["n"], r["red"]) for r in conn.execute(
         "SELECT oblast, COUNT(*) AS n, SUM(urgency_level = 'red') AS red FROM shelters "
         "WHERE status = 'published' GROUP BY oblast")}
@@ -79,7 +76,6 @@ def list_shelters(
 
     where, params = ["s.status = 'published'"], []
     if category == "finance":
-        # фінансову допомогу показуємо, якщо є активний збір або окрема фінансова потреба
         where.append(
             "(EXISTS (SELECT 1 FROM fundraisers f WHERE f.shelter_id = s.id AND f.active = 1) OR EXISTS "
             "(SELECT 1 FROM needs n WHERE n.shelter_id = s.id AND n.category = 'finance'))"
@@ -141,14 +137,11 @@ def list_shelters(
 
 @router.get("/shelters/{shelter_id}", response_model=Shelter, tags=["read"])
 def get_shelter(shelter_id: int, actor: Actor = Depends(get_actor), conn: sqlite3.Connection = Depends(get_db)):
-    # неопублікований притулок бачать лише ті, хто ним керує
     s = repo.get_shelter(conn, shelter_id)
     if s["status"] != "published" and not actor.can_manage(shelter_id):
         raise HTTPException(404, "Притулок не знайдено")
     return s
 
-
-# ---------- зміна притулку ----------
 
 SHELTER_FIELDS = ["name", "urgency_level", "oblast", "city", "district", "address", "lat", "lng", "phone",
                   "contact_person", "source_url", "verified_at"]
@@ -202,8 +195,6 @@ def delete_shelter(shelter_id: int, _: Actor = Depends(require_admin), conn: sql
     return Response(status_code=204)
 
 
-# ---------- соцмережі ----------
-
 @router.post("/shelters/{shelter_id}/links", response_model=Link, status_code=201, tags=["manage"])
 def add_link(shelter_id: int, body: LinkIn, actor: Actor = Depends(get_actor),
              conn: sqlite3.Connection = Depends(get_db)):
@@ -227,11 +218,8 @@ def delete_link(link_id: int, actor: Actor = Depends(get_actor), conn: sqlite3.C
     return Response(status_code=204)
 
 
-# ---------- збори ----------
-
 @router.get("/shelters/{shelter_id}/fundraisers", response_model=list[Fundraiser], tags=["manage"])
 def list_fundraisers(shelter_id: int, actor: Actor = Depends(get_actor), conn: sqlite3.Connection = Depends(get_db)):
-    """Усі збори, разом із вимкненими (для менеджера)."""
     repo.shelter_row(conn, shelter_id)
     check_manage(actor, shelter_id)
     return repo.fundraisers_for(conn, [shelter_id], include_inactive=True)[shelter_id]

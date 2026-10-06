@@ -1,4 +1,3 @@
-"""Клавіатури та форматування картки притулку (за шаблоном Софії, Блок Б)."""
 import math
 from html import escape as _escape
 
@@ -18,12 +17,7 @@ PAGE_SIZE = 8
 DIVIDER = "━━━━━━━━━━━━━━━━━━━━"
 
 
-# ---------- контекст списку у callback_data ----------
-# ctx: "<що>[@<область>]", де <що> = "all" | "<category>" | "food.<subcategory>" | "near"
-# напр. "all", "food.kids@lvivska", "near"   (callback_data ≤ 64 байти)
-
 def parse_ctx(ctx: str) -> tuple[str | None, str | None, str | None]:
-    """→ (category, subcategory, oblast); для "near" category = "near"."""
     what, _, oblast = ctx.partition("@")
     if what == "all":
         return None, None, oblast or None
@@ -57,8 +51,6 @@ def ctx_title(ctx: str, meta: dict) -> str:
             title += f" → {s['emoji']} {escape(s['title'])}"
     return title + f"\n📍 {escape(oblast_title(meta, oblast))}"
 
-
-# ---------- клавіатури ----------
 
 def main_menu() -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
@@ -102,8 +94,6 @@ def food_kb(meta: dict, oblast: str | None = None) -> InlineKeyboardMarkup:
 
 def oblast_picker(meta: dict, counts: dict[str, int], prefix: str, back: str,
                   with_all: bool = True) -> InlineKeyboardMarkup:
-    """Вибір області. callback = prefix + key (prefix без ключа — «уся Україна»).
-    Області з притулками — першими, решта за алфавітом списку."""
     ordered = sorted(meta["oblasts"], key=lambda o: counts.get(o["key"], 0) == 0)
     buttons = [IB(text=f"{oblast_title(meta, o['key'])} ({counts.get(o['key'], 0)})",
                   callback_data=f"{prefix}{o['key']}") for o in ordered]
@@ -178,8 +168,6 @@ def list_view(shelters: list[dict], ctx: str, page: int, meta: dict,
     rows.append([IB(text="🏠 Головне меню", callback_data="menu")])
     return "\n".join(lines), InlineKeyboardMarkup(inline_keyboard=rows)
 
-
-# ---------- картка притулку ----------
 
 def link_icon(meta: dict, kind: str) -> str:
     return next((k["emoji"] for k in meta.get("link_kinds", []) if k["key"] == kind), "🔗")

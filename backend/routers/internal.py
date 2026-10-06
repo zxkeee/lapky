@@ -1,4 +1,3 @@
-"""Службові ендпоінти для бота: черга сповіщень і нагадування про завдання."""
 import json
 import sqlite3
 from datetime import datetime, timedelta
@@ -34,19 +33,16 @@ def outbox_ack(results: list[OutboxAck], _: Actor = Depends(require_bot),
         conn.execute("UPDATE outbox SET attempts = COALESCE(?, attempts + 1), error = ? WHERE id = ?",
                      (attempts, (res.error or "")[:300], res.id))
         if res.blocked:
-            # користувач заблокував бота — більше не надсилаємо йому розсилок
             row = conn.execute("SELECT telegram_id FROM outbox WHERE id = ?", (res.id,)).fetchone()
             if row:
                 conn.execute("DELETE FROM subscriptions WHERE user_id = "
                              "(SELECT id FROM users WHERE telegram_id = ?)", (row[0],))
-    # старі надіслані повідомлення не тримаємо
     conn.execute("DELETE FROM outbox WHERE sent_at IS NOT NULL AND sent_at < datetime('now', '-14 days')")
     return {"ok": True}
 
 
 @router.post("/remind")
 def remind(_: Actor = Depends(require_bot), conn: sqlite3.Connection = Depends(get_db)):
-    """Нагадування записаним волонтерам за добу до завдання (кожне завдання — один раз)."""
     now = datetime.now()
     rows = conn.execute(
         repo.TASK_SELECT + " WHERE t.status = 'open' AND t.reminded = 0 AND t.starts_at BETWEEN ? AND ?",

@@ -10,11 +10,11 @@ CREATE TABLE IF NOT EXISTS shelters (
     lng            REAL    NOT NULL,
     phone          TEXT,
     contact_person TEXT,
-    social_links   TEXT    NOT NULL DEFAULT '[]',   -- JSON-масив посилань
-    requisites     TEXT,                            -- IBAN / номер картки
+    social_links   TEXT    NOT NULL DEFAULT '[]',
+    requisites     TEXT,
     bank           TEXT,
-    source_url     TEXT,                            -- звідки взяли дані
-    verified_at    TEXT,                            -- дата останньої перевірки (YYYY-MM-DD)
+    source_url     TEXT,
+    verified_at    TEXT,
     created_at     TEXT    NOT NULL DEFAULT (datetime('now')),
     updated_at     TEXT    NOT NULL DEFAULT (datetime('now'))
 );

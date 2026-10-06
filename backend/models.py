@@ -32,8 +32,6 @@ def _https(url: str) -> str:
     return url
 
 
-# ---------- потреби ----------
-
 class NeedIn(BaseModel):
     category: CategoryKey
     subcategory: Optional[SubcategoryKey] = None
@@ -56,8 +54,6 @@ class Need(NeedIn):
     updated_at: str
     pledges_active: int = 0
 
-
-# ---------- соцмережі та збори ----------
 
 class LinkIn(BaseModel):
     url: str = Field(max_length=500)
@@ -116,8 +112,6 @@ class Fundraiser(BaseModel):
     active: bool
 
 
-# ---------- завдання ----------
-
 class TaskIn(BaseModel):
     title: str = Field(min_length=1, max_length=120)
     description: Optional[str] = Field(default=None, max_length=1000)
@@ -145,8 +139,6 @@ class Task(BaseModel):
     status: Literal["open", "closed"]
     distance_km: Optional[float] = None
 
-
-# ---------- притулки ----------
 
 class ShelterBase(BaseModel):
     name: str = Field(min_length=1, max_length=200)
@@ -181,7 +173,6 @@ class ShelterPatch(BaseModel):
     phone: Optional[str] = None
     contact_person: Optional[str] = None
     source_url: Optional[str] = None
-    # лише адмін:
     verified_at: Optional[str] = Field(default=None, pattern=DATE_RE)
     status: Optional[ShelterStatus] = None
 
@@ -198,8 +189,6 @@ class Shelter(ShelterBase):
     updated_at: str
     distance_km: Optional[float] = None
 
-
-# ---------- користувачі, заявки, волонтерство ----------
 
 class MeIn(BaseModel):
     username: Optional[str] = Field(default=None, max_length=64)

@@ -1,4 +1,3 @@
-"""Перегляд: старт і меню, усі притулки, фільтр за потребами й областю, картка, «поруч зі мною»."""
 from aiogram import F, Router
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.filters import Command, CommandObject, CommandStart, StateFilter
@@ -11,14 +10,11 @@ from ..common import edit, fail, last_location, remember_location, show_card
 from ..config import Settings
 
 router = Router(name="browse")
-NEAR_RADIUS_KM = (30, 100, 300)  # якщо поруч нічого — розширюємо пошук
+NEAR_RADIUS_KM = (30, 100, 300)
 
-
-# ---------- старт, deep-link і головне меню ----------
 
 @router.message(CommandStart(deep_link=True))
 async def cmd_start_deep(m: Message, command: CommandObject, state: FSMContext, api: LapkyAPI, settings: Settings):
-    """Посилання з вебкарти: t.me/<bot>?start=shelter_7 | pledge_12 | task_5 | apply."""
     await state.clear()
     kind, _, raw = (command.args or "").partition("_")
     if kind == "shelter" and raw.isdigit():
@@ -76,8 +72,6 @@ async def cb_noop(c: CallbackQuery):
     await c.answer()
 
 
-# ---------- списки ----------
-
 async def load_list(api: LapkyAPI, ctx: str, uid: int) -> list[dict] | None:
     cat, sub, oblast = ui.parse_ctx(ctx)
     if cat == "near":
@@ -89,7 +83,6 @@ async def load_list(api: LapkyAPI, ctx: str, uid: int) -> list[dict] | None:
             if found:
                 return found
         return []
-    # «Усі притулки» — за терміновістю; фільтр — за назвою
     return await api.shelters(cat, sub, "urgency" if cat is None else "name", oblast=oblast)
 
 
@@ -122,8 +115,6 @@ async def cb_list(c: CallbackQuery, api: LapkyAPI, settings: Settings):
     await edit(c, text, kb)
     await c.answer()
 
-
-# ---------- вибір області ----------
 
 @router.callback_query(F.data.startswith("op:"))
 async def cb_oblast_picker(c: CallbackQuery, api: LapkyAPI):
@@ -158,8 +149,6 @@ async def cb_oblast_set(c: CallbackQuery, api: LapkyAPI, settings: Settings):
         return
     await c.answer()
 
-
-# ---------- фільтр за потребами ----------
 
 @router.message(F.text == texts.BTN_FILTER)
 @router.message(Command("filter"))
@@ -204,9 +193,7 @@ async def cb_category(c: CallbackQuery, api: LapkyAPI, settings: Settings):
     await c.answer()
 
 
-# ---------- поруч зі мною ----------
-
-@router.message(StateFilter(None), F.location)  # під час анкети геолокацію обробляє apply.py
+@router.message(StateFilter(None), F.location)
 async def msg_location(m: Message, api: LapkyAPI, settings: Settings):
     remember_location(m.from_user.id, m.location.latitude, m.location.longitude)
     try:
@@ -220,11 +207,8 @@ async def msg_location(m: Message, api: LapkyAPI, settings: Settings):
 
 @router.message(F.text == texts.BTN_NEAR)
 async def msg_near_text(m: Message):
-    # кнопка з request_location надсилає геолокацію; текст приходить лише з десктопу, де геолокації немає
     await m.answer(texts.NEAR_ASK, reply_markup=ui.main_menu())
 
-
-# ---------- картка притулку ----------
 
 @router.callback_query(F.data.startswith("sh:"))
 async def cb_shelter(c: CallbackQuery, api: LapkyAPI, settings: Settings):
@@ -246,8 +230,6 @@ async def cb_contact(c: CallbackQuery, api: LapkyAPI):
     await c.message.answer(ui.contacts_text(s), disable_web_page_preview=True)
     await c.answer()
 
-
-# ---------- як допомогти, про проєкт ----------
 
 @router.message(F.text == texts.BTN_HELP)
 @router.message(Command("help"))

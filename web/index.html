@@ -27,7 +27,6 @@ a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--black);outline-offset:3px;border-radius:4px}
 
-/* ---------- панель ---------- */
 aside{display:flex;flex-direction:column;min-height:0;min-width:0;border-right:1px solid var(--hair);background:var(--white)}
 .top{display:flex;justify-content:space-between;align-items:center;padding:28px 36px 0}
 .mark{font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--black);text-decoration:none}
@@ -74,7 +73,6 @@ aside{display:flex;flex-direction:column;min-height:0;min-width:0;border-right:1
 #content{flex:1;overflow:auto;min-height:0;padding-bottom:env(safe-area-inset-bottom,0px)}
 aside.detail .intro, aside.detail .tools{display:none}
 
-/* список */
 ul.list{list-style:none;margin:0;padding:0 36px}
 .row{width:100%;text-align:left;display:grid;grid-template-columns:8px 1fr auto;gap:2px 16px;align-items:baseline;
   padding:18px 0;border-bottom:1px solid var(--hair)}
@@ -88,7 +86,6 @@ ul.list{list-style:none;margin:0;padding:0 36px}
 .empty{padding:28px 36px;color:var(--muted)}
 .empty button{color:var(--black);text-decoration:underline;text-underline-offset:3px}
 
-/* картка */
 .card{padding:8px 36px 56px}
 .back{font-size:14px;color:var(--muted);margin:20px 0 40px;display:inline-block}
 .back:hover{color:var(--black)}
@@ -126,7 +123,6 @@ ul.list{list-style:none;margin:0;padding:0 36px}
 .meta{margin-top:36px;padding-top:20px;border-top:1px solid var(--hair);font-size:13px;color:var(--muted)}
 .meta a{color:var(--muted)}
 
-/* ---------- карта ---------- */
 #map{height:100%;background:#F2F2F2}
 .leaflet-tile-pane{filter:grayscale(1) contrast(.92) brightness(1.04)}
 .leaflet-container{font-family:var(--font)}
@@ -201,7 +197,6 @@ L.control.zoom({position:"bottomright"}).addTo(map);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-// кластер забарвлюється за найтерміновішим притулком усередині
 const layer = L.markerClusterGroup({showCoverageOnHover:false, maxClusterRadius:48, disableClusteringAtZoom:13,
   iconCreateFunction: c => {
     const top = c.getAllChildMarkers().reduce((best, m) => RANK[m.options.urgency] < RANK[best] ? m.options.urgency : best, "green");

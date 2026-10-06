@@ -1,4 +1,3 @@
-"""Профіль користувача (через бота) і підписки на сповіщення."""
 import sqlite3
 
 from fastapi import APIRouter, Depends, HTTPException, Response
@@ -28,14 +27,11 @@ def get_me(actor: Actor = Depends(require_user), conn: sqlite3.Connection = Depe
 
 @router.post("/me", response_model=Me, tags=["users"])
 def update_me(body: MeIn, actor: Actor = Depends(require_user), conn: sqlite3.Connection = Depends(get_db)):
-    """Бот оновлює username / ім'я, щоб менеджер притулку міг зв'язатися з волонтером."""
     conn.execute("UPDATE users SET username = ?, first_name = ? WHERE id = ?",
                  (body.username, body.first_name, actor.user_id))
     actor.user = dict(conn.execute("SELECT * FROM users WHERE id = ?", (actor.user_id,)).fetchone())
     return _me(conn, actor)
 
-
-# ---------- підписки ----------
 
 def _subs(conn: sqlite3.Connection, user_id: int) -> list[dict]:
     rows = conn.execute(

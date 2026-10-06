@@ -18,7 +18,6 @@ class Settings:
 
     @property
     def web_url_is_public(self) -> bool:
-        """Telegram не приймає localhost у кнопках-посиланнях."""
         p = urlparse(self.web_url)
         host = (p.hostname or "").lower()
         return p.scheme in ("http", "https") and host not in ("", "localhost", "127.0.0.1", "0.0.0.0") \

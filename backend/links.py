@@ -1,4 +1,3 @@
-"""Розпізнавання типу посилання (соцмережа) і способу збору коштів за самим значенням."""
 import re
 from urllib.parse import urlparse
 
@@ -39,7 +38,6 @@ def detect_link_kind(url: str) -> str:
 
 
 def normalize_requisites(value: str) -> str:
-    """IBAN і номер картки — без пробілів, у верхньому регістрі; решта — як є."""
     compact = re.sub(r"[\s-]", "", value).upper()
     if IBAN_RE.match(compact) or CARD_RE.match(compact):
         return compact
@@ -62,7 +60,6 @@ def detect_fundraiser_kind(value: str) -> str:
 
 
 def normalize_url(value: str, kind_hint: str | None = None) -> str | None:
-    """Приводить посилання з OSM/форм до https://… ; @handle перетворює на URL відомої мережі."""
     v = (value or "").strip()
     if not v:
         return None

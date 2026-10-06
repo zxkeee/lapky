@@ -1,4 +1,3 @@
-"""Модерація заявок (лише адміністратори: ADMIN_TELEGRAM_IDS на сервері)."""
 from html import escape
 
 from aiogram import F, Router

@@ -9,7 +9,6 @@ MIGRATIONS_DIR = Path(__file__).parent / "migrations"
 
 
 def _py_lower(value):
-    # SQLite LOWER() не знає кирилиці — реєструємо свою функцію для пошуку
     return value.lower() if isinstance(value, str) else value
 
 
@@ -24,7 +23,6 @@ def connect(path: Path | None = None) -> sqlite3.Connection:
 
 
 def _migrations() -> list[tuple[int, Path]]:
-    """Файли NNN_назва.sql / NNN_назва.py у порядку номерів."""
     found = []
     for f in MIGRATIONS_DIR.iterdir():
         if f.suffix in (".sql", ".py") and f.stem[:3].isdigit():
@@ -40,7 +38,6 @@ def _run_py_migration(conn: sqlite3.Connection, path: Path) -> None:
 
 
 def migrate(conn: sqlite3.Connection) -> list[int]:
-    """Накатує ще не застосовані міграції; кожна — в окремій транзакції. Повертає їхні номери."""
     conn.execute("CREATE TABLE IF NOT EXISTS schema_version ("
                  "version INTEGER PRIMARY KEY, applied_at TEXT NOT NULL DEFAULT (datetime('now')))")
     conn.commit()
@@ -66,7 +63,6 @@ def migrate(conn: sqlite3.Connection) -> list[int]:
 
 
 def _split_sql(script: str) -> list[str]:
-    """Ділить SQL-скрипт на оператори (без executescript, щоб не ламати транзакцію)."""
     stmts, buf = [], []
     for line in script.splitlines():
         line = line.split("--", 1)[0]
@@ -92,7 +88,6 @@ def init_db(path: Path | None = None) -> None:
 
 
 def get_db() -> Iterator[sqlite3.Connection]:
-    """FastAPI-залежність: одне з'єднання на запит."""
     conn = connect()
     try:
         yield conn

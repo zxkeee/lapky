@@ -1,8 +1,3 @@
-"""Імпорт притулків для тварин з OpenStreetMap (Overpass API).
-
-Область визначається контуром OSM (admin_level=4, ISO 3166-2), тож геокодування не потрібне.
-Записи, які вже відредагували вручну (edited_at), імпорт не перезаписує.
-"""
 import re
 import sqlite3
 from collections import Counter
@@ -11,7 +6,6 @@ from .constants import OBLAST_BY_ISO, OBLAST_TITLE, OCCUPIED_OBLASTS
 from .links import detect_link_kind, normalize_url
 from .repo import haversine_km, insert_link
 
-# основний сервер і дзеркала (основний часто перевантажений і віддає 504)
 ROAD_REF_RE = re.compile(r"^[А-ЯA-Z]{1,2}-?\d")
 OVERPASS_URLS = [
     "https://overpass-api.de/api/interpreter",
@@ -43,7 +37,6 @@ LINK_TAGS = [
 
 
 def is_wildlife(tags: dict) -> bool:
-    """Центри для диких тварин (ведмеді тощо) — не про корм і вигул, на карту не беремо."""
     kinds = {k for k in (tags.get("animal_shelter") or "").split(";") if k}
     if kinds and kinds <= {"wildlife", "bear", "horse", "bird"}:
         return True
@@ -51,7 +44,6 @@ def is_wildlife(tags: dict) -> bool:
 
 
 def parse_elements(data: dict) -> list[dict]:
-    """Відповідь Overpass → список притулків з областю (елементи area задають поточну область)."""
     out, seen, oblast = [], set(), None
     for el in data.get("elements", []):
         if el["type"] == "area":
@@ -59,7 +51,7 @@ def parse_elements(data: dict) -> list[dict]:
             continue
         osm_id = f"{el['type']}/{el['id']}"
         if osm_id in seen:
-            continue  # точка на межі може потрапити у дві області
+            continue
         seen.add(osm_id)
         tags = el.get("tags", {})
         name = (tags.get("name:uk") or tags.get("name") or "").strip()
@@ -100,7 +92,6 @@ def _score(item: dict) -> int:
 
 
 def _dedupe(items: list[dict]) -> list[dict]:
-    """Один притулок буває в OSM двічі (точка + контур): лишаємо найповніший запис."""
     kept: list[dict] = []
     for it in sorted(items, key=_score, reverse=True):
         key = _norm_name(it["name"])
@@ -113,14 +104,13 @@ def _dedupe(items: list[dict]) -> list[dict]:
 
 
 def apply_reverse_geocode(item: dict, address: dict) -> None:
-    """Доповнює місто й вулицю з відповіді Nominatim reverse (поле address)."""
     city = (address.get("city") or address.get("town") or address.get("village")
             or address.get("hamlet") or address.get("municipality"))
     if city and (item["city"].endswith(" обл.") or item["city"] in ("—", "АР Крим", "м. Севастополь")):
         item["city"] = city[:100]
     if item["address"] == "адресу уточнюйте" or item["address"] == (item.get("housenumber") or ""):
         road = address.get("road") or address.get("pedestrian")
-        if road and ROAD_REF_RE.match(road):  # «С140104», «Т-10-01» — номер дороги, а не вулиця
+        if road and ROAD_REF_RE.match(road):
             road = None
         road = road or address.get("suburb") or address.get("neighbourhood")
         number = item.get("housenumber") or address.get("house_number")
@@ -133,7 +123,6 @@ def _norm_name(s: str) -> str:
 
 
 def _find_twin(conn: sqlite3.Connection, item: dict) -> sqlite3.Row | None:
-    """Притулок, доданий вручну раніше, що збігається з OSM-записом (до 500 м і схожа назва)."""
     d = 0.006
     rows = conn.execute("SELECT * FROM shelters WHERE osm_id IS NULL AND lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?",
                         (item["lat"] - d, item["lat"] + d, item["lng"] - d * 1.6, item["lng"] + d * 1.6)).fetchall()
@@ -147,7 +136,6 @@ def _find_twin(conn: sqlite3.Connection, item: dict) -> sqlite3.Row | None:
 
 def import_items(conn: sqlite3.Connection, items: list[dict], dry_run: bool = False,
                  prune: bool = False) -> Counter:
-    """prune=True (повний імпорт по країні): OSM-записи, яких більше немає у вибірці, приховуємо."""
     stats: Counter = Counter()
     if prune:
         current = {it["osm_id"] for it in items}

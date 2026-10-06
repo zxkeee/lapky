@@ -1,4 +1,3 @@
-"""Telegram-бот «Лапки».   Запуск:  python -m bot.main"""
 import asyncio
 import contextlib
 import logging
@@ -26,7 +25,6 @@ async def on_unknown(m: Message):
 
 
 class UserSync(BaseMiddleware):
-    """Раз на годину передає серверу @username та ім'я — щоб притулок міг зв'язатися з волонтером."""
     TTL = 3600
 
     def __init__(self, api: LapkyAPI, enabled: bool):
@@ -50,7 +48,6 @@ async def main() -> None:
     bot = Bot(settings.bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp = Dispatcher(storage=MemoryStorage(), api=api, settings=settings)
     dp.update.outer_middleware(UserSync(api, enabled=bool(settings.bot_api_token)))
-    # порядок важливий: кнопки меню (browse) скидають анкету, анкети — до загального fallback
     for r in (browse.router, apply.router, manage.router, moderate.router, volunteer.router, fallback):
         dp.include_router(r)
 

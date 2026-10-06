@@ -1,4 +1,3 @@
-"""Спільне для хендлерів: редагування повідомлень, помилки API, показ картки, остання геолокація."""
 import time
 from math import asin, cos, radians, sin, sqrt
 
@@ -9,7 +8,6 @@ from . import texts, ui
 from .api import APIError, LapkyAPI
 from .config import Settings
 
-# остання геолокація користувача — лише в пам'яті бота, для списку «поруч» (живе 1 год)
 _locations: dict[int, tuple[float, float, float]] = {}
 LOCATION_TTL = 3600
 
@@ -26,7 +24,6 @@ def last_location(uid: int) -> tuple[float, float] | None:
 
 
 async def edit(c: CallbackQuery, text: str, kb: InlineKeyboardMarkup | None = None) -> None:
-    """Редагує повідомлення з кнопками; якщо не можна — надсилає нове."""
     try:
         await c.message.edit_text(text, reply_markup=kb, disable_web_page_preview=True)
     except TelegramBadRequest as e:
@@ -57,7 +54,7 @@ async def card_markup(api: LapkyAPI, settings: Settings, s: dict, uid: int, ctx:
         me = await api.me(uid)
         manages = me["is_admin"] or any(x["id"] == s["id"] for x in me["shelters"])
     except APIError:
-        pass  # без BOT_API_TOKEN картка все одно показується, лише без персональних кнопок
+        pass
     return ui.card_kb(s, ctx, page, settings, subscribed=subscribed, manages=manages)
 
 

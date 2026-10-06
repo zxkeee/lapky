@@ -1,4 +1,3 @@
-"""Кабінет притулку (/my): терміновість, потреби, соцмережі, збори, завдання, хто що везе."""
 import re
 from datetime import datetime
 from html import escape
@@ -35,8 +34,6 @@ def _kb(rows: list[list[IB]]) -> InlineKeyboardMarkup:
 def _back(sid: int) -> list[IB]:
     return [IB(text="⬅️ До кабінету", callback_data=f"m:{sid}")]
 
-
-# ---------- список притулків і кабінет ----------
 
 async def _my_list(api: LapkyAPI, uid: int) -> tuple[str, InlineKeyboardMarkup]:
     me = await api.me(uid)
@@ -105,8 +102,6 @@ async def cb_cabinet(c: CallbackQuery, state: FSMContext, api: LapkyAPI):
     await show_cabinet(c, api, int(c.data[2:]))
 
 
-# ---------- терміновість ----------
-
 @router.callback_query(F.data.startswith("mu:"))
 async def cb_urgency(c: CallbackQuery, api: LapkyAPI):
     sid = int(c.data[3:])
@@ -127,8 +122,6 @@ async def cb_urgency_set(c: CallbackQuery, api: LapkyAPI):
     await show_cabinet(c, api, int(sid))
 
 
-# ---------- телефон ----------
-
 @router.callback_query(F.data.startswith("mph:"))
 async def cb_phone(c: CallbackQuery, state: FSMContext):
     await state.set_state(Edit.phone)
@@ -148,8 +141,6 @@ async def edit_phone(m: Message, state: FSMContext, api: LapkyAPI):
     await state.clear()
     await show_cabinet(m, api, sid)
 
-
-# ---------- потреби ----------
 
 @router.callback_query(F.data.startswith("mn:"))
 async def cb_needs(c: CallbackQuery, state: FSMContext, api: LapkyAPI):
@@ -223,8 +214,6 @@ async def edit_need_text(m: Message, state: FSMContext, api: LapkyAPI):
     await show_cabinet(m, api, d["sid"])
 
 
-# ---------- соцмережі ----------
-
 @router.callback_query(F.data.startswith("ml:"))
 async def cb_links(c: CallbackQuery, state: FSMContext, api: LapkyAPI):
     await state.clear()
@@ -277,8 +266,6 @@ async def edit_link(m: Message, state: FSMContext, api: LapkyAPI):
     await state.clear()
     await show_cabinet(m, api, sid)
 
-
-# ---------- збори ----------
 
 @router.callback_query(F.data.startswith("mf:"))
 async def cb_funds(c: CallbackQuery, state: FSMContext, api: LapkyAPI):
@@ -344,8 +331,6 @@ async def edit_fund_value(m: Message, state: FSMContext, api: LapkyAPI):
     await m.answer("✅ Збір додано.")
     await show_cabinet(m, api, d["sid"])
 
-
-# ---------- завдання ----------
 
 @router.callback_query(F.data.startswith("mt:"))
 async def cb_tasks(c: CallbackQuery, state: FSMContext, api: LapkyAPI):
@@ -424,7 +409,7 @@ async def edit_task_when(m: Message, state: FSMContext):
         day, month, year, hour, minute = match.groups()
         when = datetime(int(year or now.year), int(month), int(day), int(hour), int(minute))
         if when < now and not year:
-            when = when.replace(year=now.year + 1)  # «05.01» у грудні — це наступний рік
+            when = when.replace(year=now.year + 1)
     except (AttributeError, ValueError):
         await m.answer("Не вдалося розпізнати дату. Приклад: <code>12.10 10:00</code>")
         return
@@ -452,8 +437,6 @@ async def edit_task_slots(m: Message, state: FSMContext, api: LapkyAPI):
     await m.answer("✅ Завдання опубліковано — підписники отримали сповіщення.")
     await show_cabinet(m, api, d["sid"])
 
-
-# ---------- хто що везе ----------
 
 @router.callback_query(F.data.startswith("mp:"))
 async def cb_pledges(c: CallbackQuery, api: LapkyAPI):

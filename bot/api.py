@@ -1,7 +1,3 @@
-"""Клієнт до спільного сервера. Бот НЕ має власної бази — усі дані й правила живуть на сервері.
-
-Дії від імені користувача підписуються X-Bot-Token + X-Telegram-User-Id (параметр uid).
-"""
 import time
 from typing import Any, Optional
 
@@ -16,7 +12,7 @@ class APIError(Exception):
 
 
 class LapkyAPI:
-    META_TTL = 300  # секунд
+    META_TTL = 300
 
     def __init__(self, base_url: str, bot_token: str = "", transport: httpx.AsyncBaseTransport | None = None):
         self._client = httpx.AsyncClient(base_url=base_url.rstrip("/"), timeout=10, transport=transport)
@@ -44,14 +40,13 @@ class LapkyAPI:
         if r.status_code >= 400:
             try:
                 detail = r.json().get("detail")
-                if isinstance(detail, list):  # помилка валідації pydantic
+                if isinstance(detail, list):
                     detail = "; ".join(str(d.get("msg", d)).removeprefix("Value error, ") for d in detail)
             except ValueError:
                 detail = r.text[:200]
             raise APIError(str(detail or r.status_code), r.status_code)
         return r.json() if r.content else None
 
-    # ---------- читання ----------
 
     async def meta(self) -> dict:
         if self._meta is None or time.monotonic() - self._meta_at > self.META_TTL:
@@ -81,7 +76,6 @@ class LapkyAPI:
     async def task(self, task_id: int) -> Optional[dict]:
         return await self._req("GET", f"/api/tasks/{task_id}", none_on_404=True)
 
-    # ---------- користувач ----------
 
     async def me(self, uid: int) -> dict:
         return await self._req("GET", "/api/me", uid)
@@ -118,7 +112,6 @@ class LapkyAPI:
     async def my_tasks(self, uid: int) -> list[dict]:
         return await self._req("GET", "/api/me/tasks", uid)
 
-    # ---------- заявки й модерація ----------
 
     async def apply(self, uid: int, body: dict) -> dict:
         return await self._req("POST", "/api/applications", uid, json=body)
@@ -132,7 +125,6 @@ class LapkyAPI:
     async def reject(self, uid: int, app_id: int, note: str | None = None) -> dict:
         return await self._req("POST", f"/api/applications/{app_id}/reject", uid, json={"note": note})
 
-    # ---------- керування притулком ----------
 
     async def patch_shelter(self, uid: int, shelter_id: int, data: dict) -> dict:
         return await self._req("PATCH", f"/api/shelters/{shelter_id}", uid, json=data)
@@ -175,7 +167,6 @@ class LapkyAPI:
     async def shelter_pledges(self, uid: int, shelter_id: int) -> list[dict]:
         return await self._req("GET", f"/api/shelters/{shelter_id}/pledges", uid)
 
-    # ---------- службове ----------
 
     async def outbox(self, limit: int = 50) -> list[dict]:
         return await self._req("GET", "/api/internal/outbox", bot=True, params={"limit": limit})

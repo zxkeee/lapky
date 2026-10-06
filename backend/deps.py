@@ -1,10 +1,3 @@
-"""Спільні залежності: хто робить запит і що йому дозволено.
-
-Три способи автентифікації:
-* X-Admin-Token — адмінський токен з .env (скрипти, Swagger, тести);
-* X-Bot-Token + X-Telegram-User-Id — бот діє від імені користувача Telegram;
-* нічого — анонімне читання (вебкарта).
-"""
 import secrets
 import sqlite3
 from dataclasses import dataclass, field
@@ -18,10 +11,10 @@ from .db import get_db
 
 @dataclass
 class Actor:
-    user: Optional[dict] = None          # рядок із users
+    user: Optional[dict] = None
     is_admin: bool = False
     is_bot: bool = False
-    managed: set[int] = field(default_factory=set)  # id притулків, якими керує користувач
+    managed: set[int] = field(default_factory=set)
 
     @property
     def user_id(self) -> Optional[int]:

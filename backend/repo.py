@@ -1,4 +1,3 @@
-"""Запити до БД, спільні для кількох роутерів: збирання картки притулку, геометрія."""
 import math
 import sqlite3
 from datetime import datetime
@@ -18,7 +17,6 @@ def haversine_km(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
 
 
 def bbox_around(lat: float, lng: float, radius_km: float) -> tuple[float, float, float, float]:
-    """Прямокутник (minLat, minLng, maxLat, maxLng), що гарантовано містить коло радіуса radius_km."""
     dlat = radius_km / 111.0
     dlng = radius_km / (111.0 * max(math.cos(math.radians(lat)), 0.01))
     return lat - dlat, lng - dlng, lat + dlat, lng + dlng
@@ -117,7 +115,6 @@ PUBLIC_FIELDS = ("id", "name", "urgency_level", "oblast", "city", "district", "a
 
 
 def assemble(conn: sqlite3.Connection, rows: list[sqlite3.Row]) -> list[dict]:
-    """Рядки shelters → повні картки (потреби, посилання, збори, завдання) пакетними запитами."""
     ids = [r["id"] for r in rows]
     needs, links, funds = needs_for(conn, ids), links_for(conn, ids), fundraisers_for(conn, ids)
     tasks, managed = open_tasks_for(conn, ids), managed_ids(conn, ids)
@@ -170,7 +167,6 @@ def insert_fundraiser(conn: sqlite3.Connection, shelter_id: int, title: str, kin
 
 
 def user_label(user: dict) -> str:
-    """Як показати волонтера менеджеру: @username або ім'я з посиланням на профіль (HTML)."""
     from html import escape
     if user.get("username"):
         return "@" + escape(user["username"])

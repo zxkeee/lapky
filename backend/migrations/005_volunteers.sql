@@ -1,9 +1,8 @@
--- Волонтерський функціонал: «беру потребу», підписки, завдання, черга сповіщень для бота.
 CREATE TABLE IF NOT EXISTS need_pledges (
     id         INTEGER PRIMARY KEY AUTOINCREMENT,
     need_id    INTEGER NOT NULL REFERENCES needs(id) ON DELETE CASCADE,
     user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    status     TEXT    NOT NULL DEFAULT 'active',      -- active / done / cancelled
+    status     TEXT    NOT NULL DEFAULT 'active',
     note       TEXT,
     created_at TEXT    NOT NULL DEFAULT (datetime('now')),
     updated_at TEXT    NOT NULL DEFAULT (datetime('now'))
@@ -29,9 +28,9 @@ CREATE TABLE IF NOT EXISTS volunteer_tasks (
     shelter_id  INTEGER NOT NULL REFERENCES shelters(id) ON DELETE CASCADE,
     title       TEXT    NOT NULL,
     description TEXT,
-    starts_at   TEXT    NOT NULL,                      -- 'YYYY-MM-DD HH:MM', місцевий час
+    starts_at   TEXT    NOT NULL,
     slots       INTEGER NOT NULL DEFAULT 1,
-    status      TEXT    NOT NULL DEFAULT 'open',       -- open / closed
+    status      TEXT    NOT NULL DEFAULT 'open',
     reminded    INTEGER NOT NULL DEFAULT 0,
     created_at  TEXT    NOT NULL DEFAULT (datetime('now'))
 );
@@ -48,8 +47,8 @@ CREATE TABLE IF NOT EXISTS task_signups (
 CREATE TABLE IF NOT EXISTS outbox (
     id          INTEGER PRIMARY KEY AUTOINCREMENT,
     telegram_id INTEGER NOT NULL,
-    text        TEXT    NOT NULL,                      -- HTML
-    buttons     TEXT    NOT NULL DEFAULT '[]',         -- JSON: [[{"text", "url" | "callback_data"}]]
+    text        TEXT    NOT NULL,
+    buttons     TEXT    NOT NULL DEFAULT '[]',
     created_at  TEXT    NOT NULL DEFAULT (datetime('now')),
     sent_at     TEXT,
     attempts    INTEGER NOT NULL DEFAULT 0,

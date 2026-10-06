@@ -1,10 +1,3 @@
-"""Демо для захисту (тиждень 8): змінюємо потребу в базі — вона з'являється і на карті, і в боті.
-
-    python scripts/demo_sync.py            # додати демо-потребу
-    python scripts/demo_sync.py --undo     # прибрати її
-
-Потрібні запущений сервер і ADMIN_TOKEN у .env.
-"""
 import os
 import sys
 from pathlib import Path

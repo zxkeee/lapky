@@ -1,20 +1,10 @@
-"""Реальні притулки Києва та області (зібрано з офіційних сайтів і ЗМІ, жовтень 2026).
-
-Джерело кожного запису — у полі source_url, деталі й що треба перевірити — docs/DATA_SOURCES.md.
-Рівень терміновості виставлено командою за описом потреб (не самими притулками).
-Координати звірено з OpenStreetMap (жовтень 2026).
-Притулки з решти України додає scripts/import_osm.py, а нові — заявки через бота (/apply).
-
-    python -m backend.seed           # заповнити, якщо база порожня
-    python -m backend.seed --reset   # стерти все й заповнити заново
-"""
 import sys
 
 from .db import connect, init_db
 from .links import detect_fundraiser_kind, detect_link_kind, normalize_requisites
 from .repo import insert_fundraiser, insert_link, insert_need
 
-N = lambda cat, text, sub=None: {"category": cat, "subcategory": sub, "text": text}  # noqa: E731
+N = lambda cat, text, sub=None: {"category": cat, "subcategory": sub, "text": text}
 
 SHELTERS = [
     {
@@ -205,7 +195,6 @@ SHELTERS = [
 FIELDS = ["name", "urgency_level", "oblast", "city", "district", "address", "lat", "lng", "phone",
           "contact_person", "source_url", "verified_at"]
 
-# таблиці, які чистить --reset (порядок — від залежних до основних)
 RESET_TABLES = ["outbox", "task_signups", "volunteer_tasks", "subscriptions", "need_pledges", "applications",
                 "shelter_managers", "fundraisers", "shelter_links", "needs", "shelters"]
 

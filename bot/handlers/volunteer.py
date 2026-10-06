@@ -1,4 +1,3 @@
-"""Волонтер: «беру потребу», підписки, завдання, «Мої справи»."""
 from html import escape
 
 from aiogram import F, Router
@@ -17,8 +16,6 @@ router = Router(name="volunteer")
 def _kb(rows: list[list[IB]]) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
-
-# ---------- «Беру потребу» ----------
 
 @router.callback_query(F.data.startswith("pl:"))
 async def cb_pledge_pick(c: CallbackQuery, api: LapkyAPI):
@@ -39,7 +36,6 @@ async def cb_pledge_pick(c: CallbackQuery, api: LapkyAPI):
 
 
 async def ask_pledge(event: CallbackQuery | Message, api: LapkyAPI, need_id: int) -> None:
-    """Підтвердження «беру» (з картки або з deep-link вебкарти ?start=pledge_<id>)."""
     try:
         shelters = await api.shelters()
     except APIError as e:
@@ -110,8 +106,6 @@ async def cb_pledge_close(c: CallbackQuery, api: LapkyAPI):
     await c.answer("Дякуємо! 💛" if status == "done" else "Скасовано")
     await cb_my_pledges(c, api)
 
-
-# ---------- підписки ----------
 
 @router.callback_query(F.data.startswith("sub:"))
 async def cb_toggle_subscription(c: CallbackQuery, api: LapkyAPI, settings: Settings):
@@ -195,8 +189,6 @@ async def cb_subscribe_oblast_save(c: CallbackQuery, api: LapkyAPI):
     await c.answer("🔔 Підписку оформлено")
     await cb_my_subscriptions(c, api)
 
-
-# ---------- завдання ----------
 
 async def show_task(event: CallbackQuery | Message, api: LapkyAPI, task_id: int) -> None:
     try:
@@ -285,8 +277,6 @@ async def cb_my_tasks(c: CallbackQuery, api: LapkyAPI):
     await edit(c, text, kb)
     await c.answer()
 
-
-# ---------- «Мої справи» ----------
 
 async def mine_kb(api: LapkyAPI, uid: int) -> InlineKeyboardMarkup:
     rows = [

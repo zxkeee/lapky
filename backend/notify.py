@@ -1,4 +1,3 @@
-"""Черга сповіщень (таблиця outbox). Сервер лише кладе повідомлення — бот забирає й надсилає їх."""
 import json
 import sqlite3
 from html import escape
@@ -11,7 +10,7 @@ def enqueue(conn: sqlite3.Connection, telegram_ids: Iterable[int], text: str,
             buttons: Optional[Buttons] = None, exclude: Optional[int] = None) -> int:
     payload = json.dumps(buttons or [], ensure_ascii=False)
     sent = 0
-    for tid in dict.fromkeys(telegram_ids):  # без дублів, зі збереженням порядку
+    for tid in dict.fromkeys(telegram_ids):
         if tid == exclude:
             continue
         conn.execute("INSERT INTO outbox (telegram_id, text, buttons) VALUES (?, ?, ?)", (tid, text, payload))
@@ -24,7 +23,6 @@ def shelter_button(shelter_id: int, text: str = "Відкрити притуло
 
 
 def subscribers(conn: sqlite3.Connection, shelter_id: int, urgent: bool) -> list[int]:
-    """Підписники притулку + підписники його області; only_urgent отримують лише термінове."""
     rows = conn.execute(
         """SELECT DISTINCT u.telegram_id FROM subscriptions sub
            JOIN users u ON u.id = sub.user_id

@@ -1,14 +1,3 @@
-"""Імпорт притулків, зібраних з відкритих джерел (сайти, соцмережі, ЗМІ), з JSON-файлу.
-
-    python scripts/import_web.py scripts/data/shelters_ua.json --dry-run
-    python scripts/import_web.py scripts/data/shelters_ua.json
-
-Формат запису: name, oblast, city, address|null, phone|null, links[], fundraisers[{title, value}],
-source_url, notes. Координати визначаються через Nominatim (з кешем data/geocode_web.json):
-спершу за адресою, інакше — центр населеного пункту (з невеликим зсувом, щоб точки не злипалися).
-Записи без підтвердження притулком позначаються як неперевірені (verified_at = NULL, source = 'web').
-Повторний запуск оновлює ті самі записи (за назвою + містом) і не чіпає правлених вручну.
-"""
 import argparse
 import hashlib
 import json
@@ -22,16 +11,15 @@ import httpx
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from backend import config  # noqa: E402
-from backend.constants import OBLAST_KEYS, OBLAST_TITLE, OCCUPIED_OBLASTS  # noqa: E402
-from backend.db import connect, init_db  # noqa: E402
-from backend.links import detect_link_kind, normalize_url  # noqa: E402
-from backend.models import FundraiserIn  # noqa: E402
-from backend.repo import haversine_km, insert_fundraiser, insert_link  # noqa: E402
+from backend import config
+from backend.constants import OBLAST_KEYS, OBLAST_TITLE, OCCUPIED_OBLASTS
+from backend.db import connect, init_db
+from backend.links import detect_link_kind, normalize_url
+from backend.models import FundraiserIn
+from backend.repo import haversine_km, insert_fundraiser, insert_link
 
 NOMINATIM = "https://nominatim.openstreetmap.org/search"
 HEADERS = {"User-Agent": "lapky-shelters-import/1.0"}
-# межі підконтрольної території для грубої перевірки геокодування
 UA_BOX = (44.0, 22.0, 52.5, 40.3)
 
 
@@ -63,11 +51,10 @@ class Geocoder:
             except httpx.HTTPError as e:
                 print(f"  геокодування «{q}»: {e}")
                 return None
-            time.sleep(1.1)  # правила Nominatim: не частіше 1 запиту/с
+            time.sleep(1.1)
         return tuple(self.cache[q]) if self.cache[q] else None
 
     def locate(self, item: dict) -> tuple[float, float, bool] | None:
-        """→ (lat, lng, exact). exact=False — центр населеного пункту."""
         region = OBLAST_TITLE[item["oblast"]] + ("" if item["oblast"] == "kyiv" else " область")
         city = city_plain(item["city"])
         if item.get("address"):
@@ -75,7 +62,6 @@ class Geocoder:
             hit = self._q(f"{addr}, {city}, {region}")
             if hit:
                 return (*hit, True)
-        # «Миколаїв (Велика Корениха)» → спершу уточнення в дужках, потім саме місто
         inner = re.search(r"\((.*?)\)", item["city"])
         if inner and not re.search(r"околиц|р-н|район", inner.group(1)):
             hit = self._q(f"{inner.group(1)}, {city}, {region}")
@@ -89,13 +75,11 @@ class Geocoder:
 
 
 def jitter(lat: float, lng: float, key: str) -> tuple[float, float]:
-    """Детермінований зсув до ~400 м для приблизних точок (щоб не стояли одна на одній)."""
     h = hashlib.md5(key.encode()).digest()
     return lat + (h[0] / 255 - .5) * 0.007, lng + (h[1] / 255 - .5) * 0.011
 
 
 def find_existing(conn, item: dict, lat: float, lng: float):
-    """Той самий притулок уже є в базі: схожа назва і (те саме місто або до 1 км)."""
     key = norm(item["name"])
     if not key:
         return None

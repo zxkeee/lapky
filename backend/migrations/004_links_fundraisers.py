@@ -1,4 +1,3 @@
-"""Соцмережі та збори окремими таблицями; переносимо дані зі старих social_links / requisites."""
 import json
 import sqlite3
 

@@ -1,4 +1,3 @@
-"""Потреби притулку і «беру потребу» (обіцянки волонтерів)."""
 import sqlite3
 from html import escape
 
@@ -59,7 +58,6 @@ def update_need(need_id: int, body: NeedPatch, actor: Actor = Depends(get_actor)
 def delete_need(need_id: int, actor: Actor = Depends(get_actor), conn: sqlite3.Connection = Depends(get_db)):
     row = _need(conn, need_id)
     check_manage(actor, row["shelter_id"])
-    # волонтерів, які вже везуть це, попереджаємо
     for p in conn.execute("""SELECT u.telegram_id FROM need_pledges p JOIN users u ON u.id = p.user_id
                              WHERE p.need_id = ? AND p.status = 'active'""", (need_id,)).fetchall():
         notify.enqueue(conn, [p[0]], f"ℹ️ Притулок закрив потребу «{escape(row['text'])}», яку ви взяли. "
@@ -68,8 +66,6 @@ def delete_need(need_id: int, actor: Actor = Depends(get_actor), conn: sqlite3.C
     repo.touch(conn, row["shelter_id"])
     return Response(status_code=204)
 
-
-# ---------- «Беру потребу» ----------
 
 def _pledge_out(r: sqlite3.Row) -> dict:
     return {k: r[k] for k in r.keys()}
@@ -132,7 +128,6 @@ def my_pledges(actor: Actor = Depends(require_user), conn: sqlite3.Connection = 
 
 @router.get("/shelters/{shelter_id}/pledges", tags=["manage"])
 def shelter_pledges(shelter_id: int, actor: Actor = Depends(get_actor), conn: sqlite3.Connection = Depends(get_db)):
-    """Активні обіцянки волонтерів — лише для менеджера (тут контакти волонтерів)."""
     repo.shelter_row(conn, shelter_id)
     check_manage(actor, shelter_id)
     rows = conn.execute(

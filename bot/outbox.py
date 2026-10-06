@@ -1,4 +1,3 @@
-"""Фонова доставка сповіщень: бот забирає чергу outbox із сервера й надсилає її в Telegram."""
 import asyncio
 import logging
 import time
@@ -12,7 +11,7 @@ from .api import APIError, LapkyAPI
 log = logging.getLogger("lapky.outbox")
 POLL_SECONDS = 15
 REMIND_SECONDS = 3600
-SEND_PAUSE = 0.04  # ~25 повідомлень/с — у межах лімітів Telegram
+SEND_PAUSE = 0.04
 
 
 def _markup(buttons: list[list[dict]]) -> InlineKeyboardMarkup | None:
@@ -32,10 +31,10 @@ async def deliver_once(bot: Bot, api: LapkyAPI) -> int:
         except TelegramRetryAfter as e:
             log.warning("Ліміт Telegram, чекаю %s с", e.retry_after)
             await asyncio.sleep(e.retry_after)
-            break  # решту заберемо наступного разу
+            break
         except TelegramForbiddenError as e:
             results.append({"id": msg["id"], "ok": False, "blocked": True, "error": str(e)})
-        except Exception as e:  # noqa: BLE001 — одна погана розсилка не має зупиняти чергу
+        except Exception as e:
             results.append({"id": msg["id"], "ok": False, "error": str(e)})
         await asyncio.sleep(SEND_PAUSE)
     if results:
@@ -60,6 +59,6 @@ async def run(bot: Bot, api: LapkyAPI) -> None:
             log.warning("Outbox: %s", e.detail)
         except asyncio.CancelledError:
             raise
-        except Exception:  # noqa: BLE001
+        except Exception:
             log.exception("Outbox: неочікувана помилка")
         await asyncio.sleep(POLL_SECONDS)

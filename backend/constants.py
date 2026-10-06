@@ -1,5 +1,3 @@
-"""Довідники, спільні для сервера, карти й бота (віддаються через /api/meta)."""
-
 URGENCY = [
     {"key": "red", "emoji": "🔴", "title": "Критичний рівень", "color": "#D7263D"},
     {"key": "orange", "emoji": "🟠", "title": "Високий рівень", "color": "#F08A24"},
@@ -25,8 +23,6 @@ CATEGORIES = [
 ]
 CATEGORY_ORDER = {c["key"]: i for i, c in enumerate(CATEGORIES)}
 
-# ---------- регіони ----------
-# key — стабільний ідентифікатор (у БД, URL і callback_data бота), iso — код ISO 3166-2 (для імпорту з OSM)
 OBLASTS = [
     {"key": "kyiv", "title": "м. Київ", "iso": "UA-30"},
     {"key": "kyivska", "title": "Київська", "iso": "UA-32"},
@@ -63,7 +59,6 @@ OBLAST_TITLE = {o["key"]: o["title"] for o in OBLASTS}
 SHELTER_STATUSES = ["published", "pending", "hidden"]
 SHELTER_SOURCES = ["seed", "admin", "osm", "web", "application"]
 
-# ---------- соцмережі та збори ----------
 LINK_KINDS = [
     {"key": "website", "emoji": "🌐", "title": "Сайт"},
     {"key": "facebook", "emoji": "📘", "title": "Facebook"},
@@ -88,13 +83,10 @@ FUNDRAISER_KINDS = [
 FUNDRAISER_KIND_KEYS = [k["key"] for k in FUNDRAISER_KINDS]
 URL_FUNDRAISER_KINDS = {k["key"] for k in FUNDRAISER_KINDS if k["is_url"]}
 
-# ---------- волонтерство ----------
 PLEDGE_STATUSES = ["active", "done", "cancelled"]
 TASK_STATUSES = ["open", "closed"]
 APPLICATION_KINDS = ["new_shelter", "claim"]
 APPLICATION_STATUSES = ["pending", "approved", "rejected"]
 USER_ROLES = ["volunteer", "admin"]
 
-# повністю окуповані території: притулки звідти не імпортуємо й не показуємо
-# (частково окуповані області, як-от Донецька, — точково, адмін ставить status=hidden)
 OCCUPIED_OBLASTS = {"crimea", "sevastopol", "luhanska"}

@@ -1,8 +1,3 @@
-"""«Лапки» — спільний сервер для вебкарти й Telegram-бота.
-
-Запуск:  uvicorn backend.main:app --reload
-Документація API (Swagger): http://127.0.0.1:8000/docs
-"""
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -32,5 +27,4 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], all
 for module in (shelters, needs, tasks, users, applications, internal):
     app.include_router(module.router)
 
-# ---------- вебкарта (статичні файли, монтується останньою) ----------
 app.mount("/", StaticFiles(directory=config.WEB_DIR, html=True), name="web")

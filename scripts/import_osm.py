@@ -1,14 +1,3 @@
-"""Імпорт притулків для тварин з OpenStreetMap по всій Україні.
-
-    python scripts/import_osm.py --dry-run           # лише показати, що буде додано
-    python scripts/import_osm.py                     # імпортувати
-    python scripts/import_osm.py --oblast lvivska    # лише одна область
-    python scripts/import_osm.py --refresh           # не брати кеш data/osm_cache*.json
-    python scripts/import_osm.py --no-geocode        # не доповнювати адреси через Nominatim
-
-Повторний запуск безпечний: записи оновлюються за osm_id, ручні правки не перезаписуються.
-Дані OSM — © учасники OpenStreetMap, ліцензія ODbL.
-"""
 import argparse
 import json
 import sys
@@ -19,10 +8,10 @@ import httpx
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from backend import config  # noqa: E402
-from backend.constants import OBLASTS  # noqa: E402
-from backend.db import connect, init_db  # noqa: E402
-from backend.osm import (  # noqa: E402
+from backend import config
+from backend.constants import OBLASTS
+from backend.db import connect, init_db
+from backend.osm import (
     OVERPASS_URLS, apply_reverse_geocode, import_items, overpass_query, parse_elements,
 )
 
@@ -55,7 +44,6 @@ def fetch(iso: str | None, refresh: bool) -> dict:
 
 
 def geocode(items: list[dict]) -> int:
-    """Місто й вулиця для записів без addr:* — Nominatim reverse, 1 запит/с, з кешем."""
     cache_path = config.DB_PATH.parent / "geocode_cache.json"
     cache = json.loads(cache_path.read_text(encoding="utf-8")) if cache_path.exists() else {}
     todo = [it for it in items if it["needs_geocode"]]
@@ -71,7 +59,7 @@ def geocode(items: list[dict]) -> int:
             except httpx.HTTPError as e:
                 print(f"  {it['name']}: {e}")
                 continue
-            time.sleep(1.1)  # правила використання Nominatim
+            time.sleep(1.1)
         apply_reverse_geocode(it, cache[it["osm_id"]])
     cache_path.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
     return len(todo)
