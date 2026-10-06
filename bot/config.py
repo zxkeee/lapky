@@ -14,6 +14,7 @@ class Settings:
     api_url: str
     web_url: str
     coordinator_email: str
+    bot_api_token: str = ""
 
     @property
     def web_url_is_public(self) -> bool:
@@ -36,4 +37,5 @@ def load_settings() -> Settings:
         api_url=os.getenv("API_URL", "http://127.0.0.1:8000"),
         web_url=os.getenv("WEB_URL", "http://127.0.0.1:8000"),
         coordinator_email=os.getenv("COORDINATOR_EMAIL", "lapky.team@example.com"),
+        bot_api_token=os.getenv("BOT_API_TOKEN", "").strip(),
     )

@@ -1,28 +1,12 @@
 """Перевірка контракту API (для Богдана).  Запуск:  pytest -q"""
-import pytest
-from fastapi.testclient import TestClient
-
-from backend import config
-
-
-@pytest.fixture()
-def client(tmp_path, monkeypatch):
-    monkeypatch.setattr(config, "DB_PATH", tmp_path / "test.db")
-    monkeypatch.setattr(config, "ADMIN_TOKEN", "test-token")
-    from backend.main import app
-    from backend.seed import seed
-    with TestClient(app) as c:
-        seed(reset=True)
-        yield c
-
-
-ADMIN = {"X-Admin-Token": "test-token"}
+from .conftest import ADMIN
 
 
 def test_meta(client):
     m = client.get("/api/meta").json()
     assert [u["key"] for u in m["urgency"]] == ["red", "orange", "white", "green"]
     assert len(m["categories"]) == 5
+    assert {"oblasts", "link_kinds", "fundraiser_kinds"} <= m.keys()
 
 
 def test_sorted_by_urgency(client):
@@ -38,7 +22,7 @@ def test_filter_category_and_sub(client):
     vol = client.get("/api/shelters?category=volunteer").json()
     assert all(any(n["category"] == "volunteer" for n in s["needs"]) for s in vol)
     fin = client.get("/api/shelters?category=finance").json()
-    assert all(s["requisites"] or any(n["category"] == "finance" for n in s["needs"]) for s in fin)
+    assert fin and all(s["fundraisers"] or any(n["category"] == "finance" for n in s["needs"]) for s in fin)
     assert client.get("/api/shelters?category=care&subcategory=kids").status_code == 422
 
 
@@ -52,7 +36,7 @@ def test_404(client):
 
 
 def test_admin_requires_token(client):
-    assert client.patch("/api/shelters/1", json={"urgency_level": "green"}).status_code == 422
+    assert client.patch("/api/shelters/1", json={"urgency_level": "green"}).status_code == 401
     assert client.patch("/api/shelters/1", json={"urgency_level": "green"},
                         headers={"X-Admin-Token": "wrong"}).status_code == 403
 

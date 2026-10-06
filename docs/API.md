@@ -128,3 +128,76 @@
 | 422 | невалідні дані (немає обов'язкового поля, `subcategory` не для `food`, координати поза межами тощо) |
 
 Бот при недоступності сервера показує «Сервер тимчасово недоступний», карта — підказку перезапустити сервер.
+
+---
+
+# Версія 2: уся Україна, акаунти притулків, волонтери, соцмережі й збори
+
+Схема БД тепер ведеться міграціями (`backend/migrations/NNN_*.sql|py`, таблиця `schema_version`);
+сервер накатує нові при старті, наявні дані переносяться автоматично.
+
+## Нове в моделі даних
+
+| Таблиця / поле | Опис |
+|---|---|
+| `shelters.oblast` | ключ області (`kyiv`, `lvivska`, … — `GET /api/meta` → `oblasts`) |
+| `shelters.status` | `published` / `pending` / `hidden` — публічно видно лише `published` |
+| `shelters.source` | `seed` / `admin` / `osm` / `application` |
+| `shelters.osm_id`, `edited_at` | зв'язок з OpenStreetMap; ручну правку імпорт не перезаписує |
+| `shelter_links` | соцмережі: `kind` (website, facebook, instagram, telegram, tiktok, youtube, viber, other) + `url` (лише https) |
+| `fundraisers` | збори: `title`, `kind` (monobank_jar, privat, paypal, patreon, iban, card, other), `value` (посилання або реквізити), `note`, `active` |
+| `users` | користувачі Telegram, `role` = volunteer / admin |
+| `shelter_managers` | хто керує яким притулком |
+| `applications` | заявки `new_shelter` / `claim` і їх статус |
+| `need_pledges` | «беру потребу»: волонтер + потреба, `active` / `done` / `cancelled` |
+| `subscriptions` | підписка на притулок або область, `only_urgent` |
+| `volunteer_tasks`, `task_signups` | завдання притулку (дата, кількість місць) і запис волонтерів |
+| `outbox` | черга сповіщень, яку забирає й доставляє бот |
+
+Поля `social_links`, `requisites`, `bank` у відповіді API більше не віддаються — замість них `links` і `fundraisers`.
+Картка притулку також містить `tasks` (відкриті завдання), `has_manager`, `needs[].pledges_active` і,
+для пошуку поруч, `distance_km`.
+
+## Автентифікація
+
+| Хто | Заголовки | Може |
+|---|---|---|
+| Анонім (вебкарта) | — | читати опубліковане |
+| Бот від імені користувача | `X-Bot-Token` (= `BOT_API_TOKEN`) + `X-Telegram-User-Id` | «беру», підписки, запис на завдання, заявки; менеджер — керувати своїм притулком; адмін (`ADMIN_TELEGRAM_IDS`) — модерувати |
+| Адмін-токен | `X-Admin-Token` | усе |
+
+Коди: `401` — немає потрібних заголовків, `403` — невірний токен або немає прав, `409` — конфлікт
+(вже взяли потребу, немає місць, заявку вже розглянуто).
+
+## Нові ендпоінти
+
+| Метод | Шлях | Хто | Що робить |
+|---|---|---|---|
+| GET | `/api/shelters?oblast=&near=lat,lng&radius_km=&bbox=&limit=&offset=&sort=distance` | усі | фільтр за областю, пошук поруч, видима область карти, пагінація (`X-Total-Count`) |
+| GET | `/api/oblasts` | усі | області з кількістю притулків і критичних |
+| POST/DELETE | `/api/shelters/{id}/links`, `/api/links/{id}` | менеджер | соцмережі |
+| GET/POST | `/api/shelters/{id}/fundraisers` | менеджер | збори (GET — разом із вимкненими) |
+| PATCH/DELETE | `/api/fundraisers/{id}` | менеджер | змінити / вимкнути / видалити збір |
+| GET/POST | `/api/me` | користувач | профіль, притулки, якими керує |
+| POST | `/api/needs/{id}/pledges` | користувач | «беру потребу» → повідомлення менеджеру |
+| PATCH | `/api/pledges/{id}` | волонтер / менеджер | `done` або `cancelled` |
+| GET | `/api/me/pledges`, `/api/shelters/{id}/pledges` | волонтер / менеджер | мої обіцянки / хто що везе |
+| GET/POST/DELETE | `/api/me/subscriptions` | користувач | підписки на притулок або область |
+| GET | `/api/tasks?oblast=&near=&shelter_id=` | усі | відкриті завдання |
+| POST | `/api/shelters/{id}/tasks`, PATCH/DELETE `/api/tasks/{id}` | менеджер | завдання |
+| POST/DELETE | `/api/tasks/{id}/signup` | користувач | записатися / скасувати |
+| GET | `/api/tasks/{id}/signups`, `/api/me/tasks` | менеджер / волонтер | хто записався / мої завдання |
+| POST | `/api/applications` | користувач | заявка `new_shelter` (з `payload`) або `claim` (з `shelter_id`) |
+| GET | `/api/applications`, POST `/api/applications/{id}/approve\|reject` | адмін | модерація |
+| GET | `/api/internal/outbox`, POST `/api/internal/outbox/ack`, POST `/api/internal/remind` | бот | черга сповіщень і нагадування за добу до завдання |
+
+Сповіщення ставляться в чергу, коли: з'явилася нова потреба; притулок перейшов у 🔴; опубліковано завдання
+(підписникам притулку та області, `only_urgent` — лише термінове); волонтер узяв потребу чи записався
+(менеджерам); подано заявку (адмінам); заявку розглянуто (заявнику).
+
+## Імпорт з OpenStreetMap
+
+`python scripts/import_osm.py [--dry-run] [--oblast lvivska] [--refresh]` — усі `amenity=animal_shelter` в Україні,
+область — за контуром OSM. Повторний запуск оновлює записи за `osm_id`, не чіпає відредагованих вручну
+й зв'язує OSM-об'єкти з уже наявними притулками (до 500 м + схожа назва). Станом на жовтень 2026 в OSM
+лише ~30 таких об'єктів, тож основне джерело нових притулків — заявки через бота (`/apply`).

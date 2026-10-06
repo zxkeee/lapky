@@ -2,15 +2,17 @@
 
 Джерело кожного запису — у полі source_url, деталі й що треба перевірити — docs/DATA_SOURCES.md.
 Рівень терміновості виставлено командою за описом потреб (не самими притулками).
-Координати — приблизні, Назар уточнює на тижні 6.
+Координати звірено з OpenStreetMap (жовтень 2026).
+Притулки з решти України додає scripts/import_osm.py, а нові — заявки через бота (/apply).
 
     python -m backend.seed           # заповнити, якщо база порожня
     python -m backend.seed --reset   # стерти все й заповнити заново
 """
-import json
 import sys
 
 from .db import connect, init_db
+from .links import detect_fundraiser_kind, detect_link_kind, normalize_requisites
+from .repo import insert_fundraiser, insert_link, insert_need
 
 N = lambda cat, text, sub=None: {"category": cat, "subcategory": sub, "text": text}  # noqa: E731
 
@@ -200,8 +202,12 @@ SHELTERS = [
     },
 ]
 
-FIELDS = ["name", "urgency_level", "city", "district", "address", "lat", "lng", "phone",
-          "contact_person", "social_links", "requisites", "bank", "source_url", "verified_at"]
+FIELDS = ["name", "urgency_level", "oblast", "city", "district", "address", "lat", "lng", "phone",
+          "contact_person", "source_url", "verified_at"]
+
+# таблиці, які чистить --reset (порядок — від залежних до основних)
+RESET_TABLES = ["outbox", "task_signups", "volunteer_tasks", "subscriptions", "need_pledges", "applications",
+                "shelter_managers", "fundraisers", "shelter_links", "needs", "shelters"]
 
 
 def seed(reset: bool = False) -> int:
@@ -209,24 +215,29 @@ def seed(reset: bool = False) -> int:
     conn = connect()
     try:
         if reset:
-            conn.execute("DELETE FROM needs")
-            conn.execute("DELETE FROM shelters")
-            conn.execute("DELETE FROM sqlite_sequence WHERE name IN ('needs', 'shelters')")
+            for table in RESET_TABLES:
+                conn.execute(f"DELETE FROM {table}")
+            conn.execute(f"DELETE FROM sqlite_sequence WHERE name IN ({', '.join('?' * len(RESET_TABLES))})",
+                         RESET_TABLES)
         elif conn.execute("SELECT COUNT(*) FROM shelters").fetchone()[0]:
             print("База вже не порожня — пропускаю (використайте --reset).")
             return 0
         for s in SHELTERS:
             row = {f: s.get(f) for f in FIELDS}
-            row["social_links"] = json.dumps(s.get("social_links", []), ensure_ascii=False)
-            cur = conn.execute(
-                f"INSERT INTO shelters ({', '.join(FIELDS)}) VALUES ({', '.join('?' * len(FIELDS))})",
+            row["oblast"] = s.get("oblast") or ("kyiv" if s["city"] == "Київ" else "kyivska")
+            sid = conn.execute(
+                f"INSERT INTO shelters ({', '.join(FIELDS)}, source) VALUES ({', '.join('?' * len(FIELDS))}, 'seed')",
                 [row[f] for f in FIELDS],
-            )
+            ).lastrowid
             for n in s["needs"]:
-                conn.execute(
-                    "INSERT INTO needs (shelter_id, category, subcategory, text) VALUES (?, ?, ?, ?)",
-                    (cur.lastrowid, n["category"], n["subcategory"], n["text"]),
-                )
+                insert_need(conn, sid, n["category"], n["subcategory"], n["text"])
+            for url in s.get("social_links", []):
+                insert_link(conn, sid, detect_link_kind(url), url)
+            if s.get("requisites"):
+                value = normalize_requisites(s["requisites"])
+                kind = detect_fundraiser_kind(value)
+                title = "Банка на корм" if kind == "monobank_jar" else "Реквізити притулку"
+                insert_fundraiser(conn, sid, title, kind, value, s.get("bank"))
         conn.commit()
         print(f"Додано притулків: {len(SHELTERS)}.")
         return len(SHELTERS)

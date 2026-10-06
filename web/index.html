@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Лапки — притулки для тварин Києва та області</title>
-<meta name="description" content="Притулки для тварин Києва та області і те, чого їм бракує саме зараз.">
+<title>Лапки — притулки для тварин України</title>
+<meta name="description" content="Притулки для тварин усієї України: чого їм бракує саме зараз, збори, волонтерські завдання.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="vendor/leaflet.markercluster/MarkerCluster.css">
 <style>
 :root{
   --black:#000; --text:#3B3B3B; --muted:#8C8C8C; --hair:#EBEBEB; --soft:#F5F5F4; --white:#FFF;
@@ -46,13 +47,21 @@ aside{display:flex;flex-direction:column;min-height:0;min-width:0;border-right:1
 .dot.white{background:var(--white);box-shadow:inset 0 0 0 1.5px var(--neutral)}
 
 .tools{padding:0 36px;border-bottom:1px solid var(--hair)}
+.where{display:flex;gap:10px;align-items:center;margin-bottom:6px}
+.where select{flex:1;min-width:0;font:inherit;font-size:14px;color:var(--black);border:1px solid var(--hair);border-radius:999px;
+  padding:8px 14px;background:var(--white);appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 55%,calc(100% - 13px) 55%;background-size:5px 5px;background-repeat:no-repeat}
+.where select:hover{border-color:var(--black)}
+.near{white-space:nowrap;font-size:14px;padding:8px 14px;border-radius:999px;border:1px solid var(--hair);color:var(--black)}
+.near:hover{border-color:var(--black)}
+.near[aria-pressed="true"]{background:var(--black);border-color:var(--black);color:var(--white)}
 .search{display:block;width:100%;font:inherit;font-size:15px;color:var(--black);border:0;border-bottom:1px solid var(--hair);
   padding:10px 0;background:transparent;border-radius:0}
 .search::placeholder{color:var(--muted)}
 .search:focus{outline:none;border-bottom-color:var(--black)}
-.tabs{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;padding:16px 0 0}
-.tabs::-webkit-scrollbar{display:none}
-.tab{white-space:nowrap;font-size:14px;color:var(--muted);padding:0 0 14px;border-bottom:1.5px solid transparent;display:inline-flex;align-items:center;gap:7px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px 22px;padding:16px 0 8px}
+.tab{white-space:nowrap;font-size:14px;color:var(--muted);padding:0 0 8px;border-bottom:1.5px solid transparent;display:inline-flex;align-items:center;gap:7px}
 .tab:hover{color:var(--black)}
 .tab[aria-pressed="true"]{color:var(--black);border-bottom-color:var(--black)}
 .tab i{width:7px;height:7px;border-radius:2px;display:inline-block}
@@ -66,14 +75,16 @@ aside{display:flex;flex-direction:column;min-height:0;min-width:0;border-right:1
 aside.detail .intro, aside.detail .tools{display:none}
 
 /* список */
-ul.list{list-style:none;margin:0;padding:0 36px 40px}
+ul.list{list-style:none;margin:0;padding:0 36px}
 .row{width:100%;text-align:left;display:grid;grid-template-columns:8px 1fr auto;gap:2px 16px;align-items:baseline;
   padding:18px 0;border-bottom:1px solid var(--hair)}
 .row .dot{grid-column:1;grid-row:1 / span 2;align-self:center}
 .row strong{grid-column:2;grid-row:1;font-weight:500;font-size:16px;color:var(--black);letter-spacing:-.01em}
 .row small{grid-column:2;grid-row:2;font-size:13px;color:var(--muted)}
-.row em{grid-column:3;grid-row:1 / span 2;align-self:center;font-style:normal;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.row em{grid-column:3;grid-row:1 / span 2;align-self:center;font-style:normal;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
 .row:hover strong{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.more{display:block;margin:20px 36px 40px;font-size:14px;color:var(--black);text-decoration:underline;text-underline-offset:3px}
+.listend{height:40px}
 .empty{padding:28px 36px;color:var(--muted)}
 .empty button{color:var(--black);text-decoration:underline;text-underline-offset:3px}
 
@@ -92,16 +103,25 @@ ul.list{list-style:none;margin:0;padding:0 36px 40px}
 .links{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 44px;font-size:14px}
 .links a{color:var(--muted);text-decoration:none}
 .links a:hover{color:var(--black)}
+.notice{margin:-20px 0 36px;padding:12px 16px;border-radius:12px;background:var(--soft);font-size:13px;color:var(--text)}
 .need{padding:22px 0;border-top:1px solid var(--hair)}
 .need h3{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:13px;font-weight:500;color:var(--black)}
 .need h3 i{width:8px;height:8px;border-radius:2px;display:inline-block}
 .need h3 span{color:var(--muted);font-weight:400;font-variant-numeric:tabular-nums}
 .need ul{list-style:none;margin:0;padding:0}
-.need li{padding:5px 0;color:var(--text)}
+.need li{padding:5px 0;color:var(--text);display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.need li .take{flex:none;font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}
+.need li .take:hover{color:var(--black)}
+.need li .take b{font-weight:500;color:var(--black)}
 .pay{margin-top:12px;background:var(--soft);border-radius:14px;padding:16px 18px}
+.pay strong{display:block;font-weight:500;color:var(--black);margin-bottom:4px}
 .pay .num{display:block;font-size:15px;color:var(--black);font-variant-numeric:tabular-nums;letter-spacing:.02em;word-break:break-all}
 .pay small{display:block;margin-top:4px;color:var(--muted);font-size:13px}
 .pay button,.pay a{margin-top:12px;font-size:13px;font-weight:500;color:var(--black);text-decoration:underline;text-underline-offset:3px}
+.task{padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:2px 16px;align-items:baseline}
+.task strong{font-weight:500;color:var(--black)}
+.task small{grid-column:1;color:var(--muted);font-size:13px}
+.task a{grid-column:2;grid-row:1 / span 2;align-self:center;font-size:13px;font-weight:500;color:var(--black);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .closed{padding:22px 0;border-top:1px solid var(--hair);color:var(--text)}
 .meta{margin-top:36px;padding-top:20px;border-top:1px solid var(--hair);font-size:13px;color:var(--muted)}
 .meta a{color:var(--muted)}
@@ -119,6 +139,12 @@ ul.list{list-style:none;margin:0;padding:0 36px 40px}
 .pin:hover{transform:scale(1.25)}
 .pin.red::after{content:"";position:absolute;inset:-9px;border-radius:50%;background:var(--red);opacity:.18;animation:halo 2.6s ease-out infinite;z-index:-1}
 .pin.on{transform:scale(1.5);box-shadow:0 0 0 2px var(--black),0 2px 8px rgba(0,0,0,.3)}
+.me{width:14px;height:14px;border-radius:50%;background:#2F6FEB;border:3px solid var(--white);box-shadow:0 0 0 6px rgba(47,111,235,.18)}
+.cluster{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:600 13px var(--font);color:var(--black);
+  background:var(--white);box-shadow:0 0 0 3px var(--neutral),0 2px 10px rgba(0,0,0,.18)}
+.cluster.red{box-shadow:0 0 0 3px var(--red),0 2px 10px rgba(0,0,0,.18)}
+.cluster.orange{box-shadow:0 0 0 3px var(--orange),0 2px 10px rgba(0,0,0,.18)}
+.cluster.green{box-shadow:0 0 0 3px var(--green),0 2px 10px rgba(0,0,0,.18)}
 @keyframes halo{0%{transform:scale(.6);opacity:.3}100%{transform:scale(1.6);opacity:0}}
 .tip{font:500 13px var(--font);color:var(--black);background:var(--white);border:0;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.12);padding:6px 10px}
 .tip::before{display:none}
@@ -128,7 +154,7 @@ ul.list{list-style:none;margin:0;padding:0 36px 40px}
   body{grid-template-columns:minmax(0,1fr);grid-template-rows:40vh minmax(0,1fr)}
   #map{grid-row:1} aside{grid-row:2;border-right:0;border-top:1px solid var(--hair)}
   .top{padding:20px 22px 0} .intro{padding:22px 22px 18px} .intro h1{font-size:23px}
-  .tools,.card{padding-left:22px;padding-right:22px} ul.list{padding:0 22px 32px}
+  .tools,.card{padding-left:22px;padding-right:22px} ul.list{padding:0 22px} .more{margin-left:22px;margin-right:22px}
   .card h2{font-size:30px} .back{margin:14px 0 24px} .empty{padding:24px 22px}
 }
 </style>
@@ -140,10 +166,14 @@ ul.list{list-style:none;margin:0;padding:0 36px 40px}
     <a class="bot" id="bot" href="#" target="_blank" rel="noopener" hidden>Бот у Telegram</a>
   </div>
   <section class="intro">
-    <h1 id="headline">Притулки для тварин Києва та області.</h1>
+    <h1 id="headline">Притулки для тварин України.</h1>
     <div class="legend" id="legend" role="group" aria-label="Фільтр за терміновістю"></div>
   </section>
   <div class="tools">
+    <div class="where">
+      <select id="oblast" aria-label="Область"><option value="">Уся Україна</option></select>
+      <button type="button" class="near" id="near" aria-pressed="false">Поруч зі мною</button>
+    </div>
     <input class="search" id="q" type="search" placeholder="Пошук за назвою, містом або адресою" aria-label="Пошук притулку" autocomplete="off">
     <div class="tabs" id="tabs" role="group" aria-label="Чим допомогти"></div>
     <div class="subtabs" id="subs" role="group" aria-label="Вид корму" hidden></div>
@@ -153,42 +183,66 @@ ul.list{list-style:none;margin:0;padding:0 36px 40px}
 <main id="map" aria-label="Карта притулків"></main>
 
 <script src="vendor/leaflet/leaflet.js"></script>
+<script src="vendor/leaflet.markercluster/leaflet.markercluster.js"></script>
 <script>
-const state = {meta:null, all:[], shelters:[], category:null, sub:null, urgency:null, q:"", selected:null};
+const PAGE = 50, NEAR_KM = 100;
+const state = {meta:null, all:[], shelters:[], category:null, sub:null, urgency:null, q:"", oblast:"", near:null,
+  selected:null, shown:PAGE};
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const short = u => u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 const plural = (n, one, few, many) => { const m10 = n % 10, m100 = n % 100;
   return m10 === 1 && m100 !== 11 ? one : m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14) ? few : many; };
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const RANK = {red:0, orange:1, white:2, green:3};
 
-const map = L.map("map", {zoomControl:false, attributionControl:true}).setView([50.45, 30.52], 9);
+const map = L.map("map", {zoomControl:false, attributionControl:true}).setView([48.6, 31.2], 6);
 L.control.zoom({position:"bottomright"}).addTo(map);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-const layer = L.layerGroup().addTo(map);
+// кластер забарвлюється за найтерміновішим притулком усередині
+const layer = L.markerClusterGroup({showCoverageOnHover:false, maxClusterRadius:48, disableClusteringAtZoom:13,
+  iconCreateFunction: c => {
+    const top = c.getAllChildMarkers().reduce((best, m) => RANK[m.options.urgency] < RANK[best] ? m.options.urgency : best, "green");
+    return L.divIcon({className:"", iconSize:[40,40], html:`<div class="cluster ${top}">${c.getChildCount()}</div>`});
+  }}).addTo(map);
+let meMarker = null;
 
 async function api(path){ const r = await fetch(path); if(!r.ok) throw new Error(r.status); return r.json(); }
 const urg = key => state.meta.urgency.find(u => u.key === key);
 const cat = key => state.meta.categories.find(c => c.key === key);
+const oblastName = key => { const o = state.meta.oblasts.find(o => o.key === key); if(!o) return "";
+  return ["kyiv","sevastopol","crimea"].includes(key) ? o.title : o.title + " область"; };
+const linkKind = key => state.meta.link_kinds.find(k => k.key === key) || {title:"Посилання"};
+const botLink = start => state.meta.bot_url ? `${state.meta.bot_url}?start=${start}` : null;
 
 function headline(){
-  const n = state.all.length, red = state.all.filter(s => s.urgency_level === "red").length,
-        orange = state.all.filter(s => s.urgency_level === "orange").length;
+  const pool = state.oblast ? state.all.filter(s => s.oblast === state.oblast) : state.all;
+  const n = pool.length, red = pool.filter(s => s.urgency_level === "red").length,
+        orange = pool.filter(s => s.urgency_level === "orange").length;
   let tail = "";
   if(red) tail = ` ${red} ${plural(red, "потребує", "потребують", "потребують")} допомоги просто зараз.`;
   else if(orange) tail = ` ${orange} — з високими потребами.`;
-  $("#headline").innerHTML = `${n} ${plural(n, "притулок", "притулки", "притулків")} Києва та області.<span>${esc(tail)}</span>`;
+  const where = state.oblast ? (state.oblast === "kyiv" ? "Києва" : oblastName(state.oblast).replace(/ька область$/, "ької області")) : "України";
+  $("#headline").innerHTML = `${n} ${plural(n, "притулок", "притулки", "притулків")} ${esc(where)}.<span>${esc(tail)}</span>`;
   $("#legend").innerHTML = "";
   state.meta.urgency.forEach(u => {
-    const count = state.all.filter(s => s.urgency_level === u.key).length;
+    const count = pool.filter(s => s.urgency_level === u.key).length;
     const b = document.createElement("button");
     b.type = "button"; b.setAttribute("aria-pressed", state.urgency === u.key);
     b.innerHTML = `<span class="dot ${u.key}"></span>${esc(u.title)} <b>${count}</b>`;
     b.onclick = () => { state.urgency = state.urgency === u.key ? null : u.key; headline(); load(); };
     $("#legend").append(b);
   });
+}
+
+function oblasts(){
+  const counts = {}; state.all.forEach(s => counts[s.oblast] = (counts[s.oblast] || 0) + 1);
+  const sel = $("#oblast");
+  sel.innerHTML = `<option value="">Уся Україна · ${state.all.length}</option>` + state.meta.oblasts
+    .filter(o => counts[o.key] || o.key === state.oblast)
+    .map(o => `<option value="${o.key}"${o.key === state.oblast ? " selected" : ""}>${esc(oblastName(o.key))} · ${counts[o.key] || 0}</option>`).join("");
 }
 
 function filters(){
@@ -209,13 +263,16 @@ function filters(){
 function setFilter(c, s){ state.category = c; state.sub = s; filters(); load(); }
 
 async function load(){
-  const p = new URLSearchParams({sort:"urgency"});
+  const p = new URLSearchParams({sort: state.near ? "distance" : "urgency"});
   if(state.category) p.set("category", state.category);
   if(state.sub) p.set("subcategory", state.sub);
   if(state.urgency) p.set("urgency", state.urgency);
   if(state.q) p.set("q", state.q);
+  if(state.oblast && !state.near) p.set("oblast", state.oblast);
+  if(state.near){ p.set("near", state.near.join(",")); p.set("radius_km", NEAR_KM); }
   try{ state.shelters = await api("/api/shelters?" + p); }
   catch{ $("#content").innerHTML = `<p class="empty">Сервер не відповідає. Запустіть його й оновіть сторінку.</p>`; return; }
+  state.shown = PAGE;
   markers();
   const s = state.selected && state.shelters.find(x => x.id === state.selected);
   s ? card(s) : list();
@@ -223,34 +280,55 @@ async function load(){
 
 function markers(){
   layer.clearLayers();
-  state.shelters.forEach(s => {
+  layer.addLayers(state.shelters.map(s => {
     const icon = L.divIcon({className:"", iconSize:[16,16], iconAnchor:[8,8],
       html:`<div class="pin ${s.urgency_level}${s.id === state.selected ? " on" : ""}"></div>`});
-    L.marker([s.lat, s.lng], {icon, alt:s.name, keyboard:true,
-      zIndexOffset: s.id === state.selected ? 1000 : (3 - state.meta.urgency.findIndex(u => u.key === s.urgency_level)) * 100})
+    return L.marker([s.lat, s.lng], {icon, alt:s.name, keyboard:true, urgency:s.urgency_level,
+      zIndexOffset: s.id === state.selected ? 1000 : (3 - RANK[s.urgency_level]) * 100})
       .bindTooltip(esc(s.name), {direction:"top", offset:[0,-10], className:"tip"})
-      .on("click", () => select(s.id)).addTo(layer);
-  });
+      .on("click", () => select(s.id));
+  }));
 }
 
-function needCount(s){ return s.needs.length; }
+function fit(){
+  const pts = state.shelters.map(s => [s.lat, s.lng]);
+  if(state.near) pts.push(state.near);
+  if(pts.length) map.fitBounds(L.latLngBounds(pts), {padding:[40,40], maxZoom:state.near ? 12 : 11});
+}
 
 function list(){
   document.querySelector("aside").classList.remove("detail");
   if(!state.shelters.length){
-    $("#content").innerHTML = `<p class="empty">Нічого не знайдено за цими фільтрами. <button type="button" id="reset">Скинути фільтри</button></p>`;
-    $("#reset").onclick = () => { Object.assign(state, {category:null, sub:null, urgency:null, q:""}); $("#q").value = ""; headline(); filters(); load(); };
+    const why = state.near ? `Поруч (до ${NEAR_KM} км) притулків не знайдено.` : "Нічого не знайдено за цими фільтрами.";
+    $("#content").innerHTML = `<p class="empty">${why} <button type="button" id="reset">Скинути фільтри</button></p>`;
+    $("#reset").onclick = () => { Object.assign(state, {category:null, sub:null, urgency:null, q:"", oblast:"", near:null});
+      $("#q").value = ""; setNear(null); oblasts(); headline(); filters(); load().then(fit); };
     return;
   }
-  $("#content").innerHTML = `<ul class="list">${state.shelters.map(s => {
-    const n = needCount(s);
+  const rows = state.shelters.slice(0, state.shown).map(s => {
+    const n = s.needs.length;
+    const right = s.distance_km != null ? `${s.distance_km.toLocaleString("uk-UA")} км`
+      : n ? n + " " + plural(n, "потреба", "потреби", "потреб") : "без потреб";
     return `<li><button type="button" class="row" data-id="${s.id}" aria-label="${esc(s.name)}, ${esc(urg(s.urgency_level).title)}">
       <span class="dot ${s.urgency_level}"></span>
       <strong>${esc(s.name)}</strong>
-      <em>${n ? n + " " + plural(n, "потреба", "потреби", "потреб") : "без потреб"}</em>
+      <em>${right}</em>
       <small>${esc([s.city, s.district].filter(Boolean).join(", "))}</small>
-    </button></li>`; }).join("")}</ul>`;
+    </button></li>`; }).join("");
+  const rest = state.shelters.length - state.shown;
+  $("#content").innerHTML = `<ul class="list">${rows}</ul>` +
+    (rest > 0 ? `<button type="button" class="more" id="more">Показати ще ${Math.min(rest, PAGE)} з ${rest}</button>` : `<div class="listend"></div>`);
   $("#content").querySelectorAll(".row").forEach(b => b.onclick = () => select(+b.dataset.id));
+  if(rest > 0) $("#more").onclick = () => { const top = $("#content").scrollTop; state.shown += PAGE; list(); $("#content").scrollTop = top; };
+}
+
+function payBlock(f){
+  const note = f.note ? `<small>${esc(f.note)}</small>` : "";
+  return /^https?:/.test(f.value)
+    ? `<div class="pay"><strong>${esc(f.title)}</strong><span class="num">${esc(short(f.value))}</span>${note}
+       <a href="${esc(f.value)}" target="_blank" rel="noopener">Підтримати</a></div>`
+    : `<div class="pay"><strong>${esc(f.title)}</strong><span class="num">${esc(f.value)}</span>${note}
+       <button type="button" data-copy="${esc(f.value)}">Скопіювати реквізити</button></div>`;
 }
 
 function card(s){
@@ -258,32 +336,39 @@ function card(s){
   const u = urg(s.urgency_level);
   const sections = state.meta.categories.map(c => {
     const items = s.needs.filter(n => n.category === c.key);
-    let pay = "";
-    if(c.key === "finance" && s.requisites){
-      pay = /^https?:/.test(s.requisites)
-        ? `<div class="pay"><span class="num">${esc(short(s.requisites))}</span>${s.bank ? `<small>${esc(s.bank)}</small>` : ""}
-           <a href="${esc(s.requisites)}" target="_blank" rel="noopener">Задонатити</a></div>`
-        : `<div class="pay"><span class="num">${esc(s.requisites)}</span>${s.bank ? `<small>${esc(s.bank)}</small>` : ""}
-           <button type="button" data-copy="${esc(s.requisites)}">Скопіювати реквізити</button></div>`;
-    }
-    if(!items.length && !pay) return "";
+    const pays = c.key === "finance" ? s.fundraisers.map(payBlock).join("") : "";
+    if(!items.length && !pays) return "";
+    const li = n => { const take = botLink(`pledge_${n.id}`);
+      const count = n.pledges_active ? `<b>${n.pledges_active}</b> вже ${plural(n.pledges_active, "везе", "везуть", "везуть")}` : "";
+      return `<li><span>${esc(n.text)}</span>${take ? `<a class="take" href="${esc(take)}" target="_blank" rel="noopener">${count ? count + " · " : ""}Беру</a>`
+        : count ? `<span class="take">${count}</span>` : ""}</li>`; };
     return `<section class="need"><h3><i style="background:${c.color}"></i>${esc(c.title)}${items.length ? ` <span>${items.length}</span>` : ""}</h3>
-      ${items.length ? `<ul>${items.map(n => `<li>${esc(n.text)}</li>`).join("")}</ul>` : ""}${pay}</section>`;
+      ${items.length ? `<ul>${items.map(li).join("")}</ul>` : ""}${pays}</section>`;
   }).join("");
+  const tasks = s.tasks.length ? `<section class="need"><h3><i style="background:#8A5CC7"></i>Волонтерські завдання <span>${s.tasks.length}</span></h3>
+    ${s.tasks.map(t => { const link = botLink(`task_${t.id}`), free = t.slots - t.taken;
+      return `<div class="task"><strong>${esc(t.title)}</strong><small>${esc(new Date(t.starts_at.replace(" ", "T")).toLocaleString("uk-UA", {day:"numeric", month:"long", hour:"2-digit", minute:"2-digit"}))} · ${free ? `вільно ${free} з ${t.slots}` : "місць немає"}</small>
+        ${link && free ? `<a href="${esc(link)}" target="_blank" rel="noopener">Записатися</a>` : ""}</div>`; }).join("")}</section>` : "";
   const phone = s.phone ? `<a class="btn" href="tel:${esc(s.phone.replace(/[^+\d]/g, ""))}">Подзвонити</a>` : "";
   const route = `<a class="btn ${phone ? "line" : ""}" href="https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lng}" target="_blank" rel="noopener">Маршрут</a>`;
-  const bot = state.meta.bot_url ? `<a href="${esc(state.meta.bot_url)}" target="_blank" rel="noopener">Відкрити в Telegram</a>` : "";
+  const follow = botLink(`shelter_${s.id}`);
+  const sub = follow ? `<a class="btn line" href="${esc(follow)}" target="_blank" rel="noopener">Стежити в Telegram</a>` : "";
+  const claim = !s.has_manager && botLink(`claim_${s.id}`) ? `<a href="${esc(botLink(`claim_${s.id}`))}" target="_blank" rel="noopener">Це ваш притулок?</a>` : "";
+  const unverified = !s.verified_at && ["osm", "web"].includes(s.source)
+    ? `<p class="notice">Дані зібрано з відкритих джерел${s.source === "osm" ? " (OpenStreetMap)" : ""}, притулок їх ще не підтвердив. Перед візитом зателефонуйте.</p>` : "";
   $("#content").innerHTML = `<article class="card">
     <button type="button" class="back" id="back">← Усі притулки</button>
-    <div class="status"><span class="dot ${s.urgency_level}"></span>${esc(u.title)}</div>
+    <div class="status"><span class="dot ${s.urgency_level}"></span>${esc(u.title)}${s.distance_km != null ? ` · ${s.distance_km.toLocaleString("uk-UA")} км від вас` : ""}</div>
     <h2>${esc(s.name)}</h2>
     <p class="addr">${esc([s.city, s.district, s.address].filter(Boolean).join(", "))}</p>
-    <div class="actions">${phone}${route}</div>
+    <div class="actions">${phone}${route}${sub}</div>
     <div class="links">${s.phone ? `<span>${esc(s.phone)}${s.contact_person ? ", " + esc(s.contact_person) : ""}</span>` : ""}
-      ${s.social_links.map(l => `<a href="${esc(l)}" target="_blank" rel="noopener">${esc(short(l))}</a>`).join("")}${bot}</div>
+      ${s.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener" title="${esc(short(l.url))}">${esc(l.kind === "website" ? short(l.url) : linkKind(l.kind).title)}</a>`).join("")}</div>
+    ${unverified}
     ${sections || `<p class="closed">Зараз усі потреби закриті.</p>`}
+    ${tasks}
     <p class="meta">${s.verified_at ? "Дані перевірено " + esc(new Date(s.verified_at).toLocaleDateString("uk-UA", {day:"numeric", month:"long", year:"numeric"})) + ". " : ""}
-      ${s.source_url && /^https?:/.test(s.source_url) ? `<a href="${esc(s.source_url)}" target="_blank" rel="noopener">Джерело</a>` : ""}</p>
+      ${s.source_url && /^https?:/.test(s.source_url) ? `<a href="${esc(s.source_url)}" target="_blank" rel="noopener">Джерело</a>. ` : ""}${claim}</p>
   </article>`;
   $("#back").onclick = () => select(null);
   $("#content").querySelectorAll("[data-copy]").forEach(b => b.onclick = async () => {
@@ -301,10 +386,35 @@ function select(id){
   if(id === null) return list();
   const s = state.shelters.find(x => x.id === id);
   if(!s) return list();
-  map.flyTo([s.lat, s.lng], Math.max(map.getZoom(), 12), {duration: reduced ? 0 : .7});
+  map.flyTo([s.lat, s.lng], Math.max(map.getZoom(), 13), {duration: reduced ? 0 : .7});
   card(s);
 }
 
+function setNear(point){
+  state.near = point;
+  $("#near").setAttribute("aria-pressed", !!point);
+  $("#near").textContent = point ? "Поруч зі мною ✕" : "Поруч зі мною";
+  $("#oblast").disabled = !!point;
+  if(meMarker){ map.removeLayer(meMarker); meMarker = null; }
+  if(point) meMarker = L.marker(point, {icon:L.divIcon({className:"", iconSize:[14,14], iconAnchor:[7,7], html:'<div class="me"></div>'}),
+    keyboard:false, interactive:false}).addTo(map);
+}
+
+$("#near").onclick = () => {
+  if(state.near){ setNear(null); load().then(fit); return; }
+  if(!navigator.geolocation){ alert("Браузер не підтримує геолокацію."); return; }
+  $("#near").textContent = "Шукаю вас…";
+  navigator.geolocation.getCurrentPosition(
+    pos => { setNear([+pos.coords.latitude.toFixed(5), +pos.coords.longitude.toFixed(5)]); load().then(fit); },
+    () => { setNear(null); alert("Не вдалося визначити місце. Дозвольте доступ до геолокації або оберіть область."); },
+    {enableHighAccuracy:false, timeout:10000, maximumAge:600000});
+};
+$("#oblast").onchange = e => {
+  state.oblast = e.target.value;
+  const url = new URL(location); state.oblast ? url.searchParams.set("oblast", state.oblast) : url.searchParams.delete("oblast");
+  history.replaceState(null, "", url);
+  headline(); load().then(fit);
+};
 let t;
 $("#q").addEventListener("input", e => { clearTimeout(t); t = setTimeout(() => { state.q = e.target.value.trim(); load(); }, 250); });
 document.addEventListener("keydown", e => { if(e.key === "Escape" && state.selected) select(null); });
@@ -313,12 +423,14 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && state.selec
   try{ [state.meta, state.all] = await Promise.all([api("/api/meta"), api("/api/shelters")]); }
   catch{ $("#content").innerHTML = `<p class="empty">Сервер не відповідає. Запустіть його й оновіть сторінку.</p>`; return; }
   if(state.meta.bot_url){ $("#bot").href = state.meta.bot_url; $("#bot").hidden = false; }
-  headline(); filters();
+  const params = new URLSearchParams(location.search);
+  if(state.meta.oblasts.some(o => o.key === params.get("oblast"))) state.oblast = params.get("oblast");
+  oblasts(); headline(); filters();
   await load();
-  const deep = +new URLSearchParams(location.search).get("shelter");
+  const deep = +params.get("shelter");
   if(deep && state.shelters.some(s => s.id === deep)) select(deep);
-  else if(state.all.length) map.fitBounds(L.latLngBounds(state.all.map(s => [s.lat, s.lng])), {padding:[40,40], maxZoom:11});
-  setInterval(async () => { try{ state.all = await api("/api/shelters"); headline(); }catch{} load(); }, 60000);
+  else fit();
+  setInterval(async () => { try{ state.all = await api("/api/shelters"); oblasts(); headline(); }catch{} load(); }, 60000);
 })();
 </script>
 </body>

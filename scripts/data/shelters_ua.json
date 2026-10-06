@@ -1,0 +1,2217 @@
+[
+ {
+  "name": "Безпритульний Світ (БО, центр евакуації та реабілітації тварин)",
+  "oblast": "kyivska",
+  "city": "м. Біла Церква",
+  "address": null,
+  "phone": "+380 97 720 1542",
+  "links": [
+   "https://homeless-world.org.ua/",
+   "https://www.facebook.com/HomelessWorldUa/",
+   "https://www.instagram.com/homeless_world.ua/",
+   "https://t.me/homeless_world"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка Monobank",
+    "value": "https://send.monobank.ua/jar/4mZvoWEXEB"
+   }
+  ],
+  "source_url": "https://homeless-world.org.ua/",
+  "notes": "Евакуація тварин з прифронтових територій; 600+ тварин."
+ },
+ {
+  "name": "Мирноград Енімалс (БО БФ)",
+  "oblast": "kyivska",
+  "city": "с. Тарасівщина",
+  "address": null,
+  "phone": "+380 66 949 0922",
+  "links": [
+   "https://www.instagram.com/myrnohrad_animals/",
+   "https://www.threads.com/@myrnohrad_animals",
+   "https://happypaw.ua/ua/zoo-organization/19666"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка Monobank",
+    "value": "https://send.monobank.ua/jar/4MhMiZnrov"
+   },
+   {
+    "title": "IBAN",
+    "value": "UA773052990000026000010143466"
+   }
+  ],
+  "source_url": "https://www.instagram.com/myrnohrad_animals/",
+  "notes": "Притулок, евакуйований з Мирнограда на Київщину; 400+ тварин."
+ },
+ {
+  "name": "Бабинецький притулок для тварин",
+  "oblast": "kyivska",
+  "city": "смт Бабинці",
+  "address": null,
+  "phone": "+380 50 922 5321",
+  "links": [
+   "https://www.instagram.com/babentsyshelter/",
+   "https://www.threads.com/@babentsyshelter",
+   "https://happypaw.ua/ua/zoo-organization/9877"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.threads.com/@babentsyshelter",
+  "notes": "100+ собак, евакуйованих із зон бойових дій."
+ },
+ {
+  "name": "ГО «У добрі руки» — собачий притулок м. Переяслав",
+  "oblast": "kyivska",
+  "city": "м. Переяслав",
+  "address": "мкр. Підварки (територія колишньої ферми)",
+  "phone": "+380 95 595 2667",
+  "links": [
+   "https://www.facebook.com/groups/145259702837551",
+   "https://happypaw.ua/ua/zoo-organization/458"
+  ],
+  "fundraisers": [
+   {
+    "title": "IBAN ГО «У добрі руки» (опубліковано 2023)",
+    "value": "UA143052990000026006010117333"
+   }
+  ],
+  "source_url": "https://ps.informator.ua/2024/12/28/vsi-vy-zrobyly-nejmovirnyj-novorichnyj-podarunok-nashym-hvostykam-sobachyj-prytulok-u-pereyaslavi-vygrav-600-kilogramiv-suhogo-kormu/",
+  "notes": "~100 собак; міський притулок під опікою ГО. IBAN з публікації 2023 р. — варто перевірити."
+ },
+ {
+  "name": "ГО «Pet Project» (Хвостаті-кудлаті), притулок м. Славутич",
+  "oblast": "kyivska",
+  "city": "м. Славутич",
+  "address": null,
+  "phone": "+380 66 719 6321",
+  "links": [
+   "https://www.facebook.com/groups/2049662685296428",
+   "https://happypaw.ua/ua/zoo-organization/10078"
+  ],
+  "fundraisers": [],
+  "source_url": "https://life.kyiv.ua/news/vedmezhatko-z-velykym-sertsem-u-slavutychi-pes-iz-prytulku-shukaie-rodynu",
+  "notes": null
+ },
+ {
+  "name": "Зоозахисна організація «Життя» (ГО), Березань",
+  "oblast": "kyivska",
+  "city": "м. Березань",
+  "address": null,
+  "phone": "+380 66 405 0880",
+  "links": [
+   "https://www.facebook.com/zooberezan",
+   "https://www.instagram.com/zooberezan/",
+   "https://happypaw.ua/ua/zoo-organization/10076"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.instagram.com/zooberezan/",
+  "notes": "Наявність власної бази не підтверджена."
+ },
+ {
+  "name": "Дім «особливих» Хвостиків — притулок для тварин з інвалідністю",
+  "oblast": "kyivska",
+  "city": "м. Ірпінь",
+  "address": null,
+  "phone": "+380 98 068 1366",
+  "links": [
+   "https://domkhvostov.in.ua/",
+   "https://www.instagram.com/dom.khvostov/"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка Monobank — загальні потреби",
+    "value": "https://send.monobank.ua/jar/23FBLoaJNG"
+   },
+   {
+    "title": "Банка Monobank — візки для тварин",
+    "value": "https://send.monobank.ua/jar/858JxX7xCQ"
+   }
+  ],
+  "source_url": "https://domkhvostov.in.ua/",
+  "notes": "Хоспіс і реабілітація тварин з інвалідністю."
+ },
+ {
+  "name": "Зоопатруль Україна (ГО), притулок в Ірпені",
+  "oblast": "kyivska",
+  "city": "м. Ірпінь",
+  "address": "вул. Покровська, 1-Щ",
+  "phone": "+380 68 867 5763",
+  "links": [
+   "https://gladpet.org/pets;organization_id=313"
+  ],
+  "fundraisers": [],
+  "source_url": "https://imr.gov.ua/den-vidkrytyh-dverej-u-prytulku-dlya-tvaryn-zoopatrul/",
+  "notes": "Притулок за європейськими стандартами, ~500 тварин (за профілем на GladPet, оновл. 2025-08). Телефон — з профілю організації на GladPet."
+ },
+ {
+  "name": "Притулок «Велике серце» (БФ «Велике серце милосердя»)",
+  "oblast": "kyivska",
+  "city": "Бориспільський р-н",
+  "address": null,
+  "phone": "+380 95 357 9763",
+  "links": [
+   "https://www.instagram.com/big_heart_ua/",
+   "https://www.facebook.com/bolshoeserdce/",
+   "https://happypaw.ua/ua/zoo-organization/6470"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.instagram.com/big_heart_ua/",
+  "notes": "З 2012 р., ~48 собак. Локація за Happy Paw (Бориспільський р-н); в Instagram вказано «Київ» — уточнити."
+ },
+ {
+  "name": "КП «Центр стерилізації та адопції тварин» (Бориспіль)",
+  "oblast": "kyivska",
+  "city": "м. Бориспіль",
+  "address": "вул. Гоголя, 63",
+  "phone": "+380 68 917 0909",
+  "links": [
+   "https://www.instagram.com/cst__boryspil_/",
+   "https://www.facebook.com/kpcsatboryspil",
+   "https://gladpet.org/pets;organization_id=329"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.instagram.com/cst__boryspil_/",
+  "notes": "Комунальний пункт перетримки: стерилізація, лікування та прилаштування безпритульних тварин."
+ },
+ {
+  "name": "Притулок для тварин Зооплатформа (Zooplatform)",
+  "oblast": "kyivska",
+  "city": "с. Вороньків",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/zooplatform/",
+   "https://gladpet.org/pets;organization_id=214"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.instagram.com/zooplatform/",
+  "notes": "Невеликий притулок, 8 років. Нових тварин не приймає."
+ },
+ {
+  "name": "Притулок «Носики» (Nosiki)",
+  "oblast": "kyivska",
+  "city": "смт Гостомель",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/adopt_nosiki/",
+   "https://gladpet.org/pets;organization_id=274"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка Monobank",
+    "value": "https://send.monobank.ua/jar/2vTZ5txnwo"
+   }
+  ],
+  "source_url": "https://www.instagram.com/adopt_nosiki/",
+  "notes": "50+ собак і ~20 котів; за даними GladPet розташований у Гостомелі (на території іншого притулку)."
+ },
+ {
+  "name": "Манана (БО БФ)",
+  "oblast": "kyivska",
+  "city": "м. Бровари",
+  "address": null,
+  "phone": "+380 50 658 0205",
+  "links": [
+   "https://www.facebook.com/manana.kiev/",
+   "https://happypaw.ua/ua/zoo-organization/9954"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/9954",
+  "notes": "З 2008 р., тварини після травм. Активність підтверджена лише статусом чинного партнера Happy Paw (жовтень 2026) — бажано перевірити."
+ },
+ {
+  "name": "Притулок для тварин «Другий шанс»",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 98 597 1095",
+  "links": [
+   "https://www.instagram.com/animal_shelter_kiev/",
+   "https://www.facebook.com/AnimalShelterKiev/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/9981",
+  "notes": "70+ котів і 14 собак."
+ },
+ {
+  "name": "Котобанда (БО)",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 99 791 4680",
+  "links": [
+   "https://www.instagram.com/kotobanda.kyiv/",
+   "https://linktr.ee/fond.kotobanda"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка на ліки",
+    "value": "https://send.monobank.ua/jar/2n9aD7DN7U"
+   },
+   {
+    "title": "Банка на корм",
+    "value": "https://send.monobank.ua/jar/3hFJWr3sCp"
+   },
+   {
+    "title": "Допомога котикам",
+    "value": "https://send.monobank.ua/jar/7RR1K4Pak5"
+   },
+   {
+    "title": "Допомога песикам",
+    "value": "https://send.monobank.ua/jar/7youV9NQye"
+   }
+  ],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/10849",
+  "notes": "~120 котів під опікою."
+ },
+ {
+  "name": "Притулок Vesna Pet / КотоДім «Cats need house»",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 97 925 6995",
+  "links": [
+   "https://www.instagram.com/cats_need_house/",
+   "https://happypaw.ua/ua/zoo-organization/459",
+   "https://gladpet.org/pets;organization_id=65"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка КотоДім",
+    "value": "https://send.monobank.ua/jar/SiYyXLJuH"
+   }
+  ],
+  "source_url": "https://www.instagram.com/cats_need_house/",
+  "notes": "Березняки. ~600 котів; пов'язаний собачий притулок «Самотній пес» (Happy Paw 4879)."
+ },
+ {
+  "name": "БФ «Хочу кота» (Wannacat)",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 99 229 7043",
+  "links": [
+   "https://wannacat.org/",
+   "https://www.facebook.com/xochukota",
+   "https://www.instagram.com/xochukota/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://wannacat.org/",
+  "notes": "Порятунок і прилаштування котів через мережу перетримок."
+ },
+ {
+  "name": "Притулок для котиків «Kitty House»",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 96 184 4917",
+  "links": [
+   "https://www.kittyhouse.com.ua/",
+   "https://www.instagram.com/kitty.house.kyiv/",
+   "https://www.facebook.com/kitty.house.kyiv/",
+   "https://www.tiktok.com/@kitty.house.kyiv"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.kittyhouse.com.ua/",
+  "notes": "Район м. Осокорки; відвідування 11:00–19:00; прилаштовано 5000+ котів."
+ },
+ {
+  "name": "Притулок Кото.Хата (БО БФ «Від серця до хвоста»)",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 63 725 1342",
+  "links": [
+   "https://www.instagram.com/koto.xata/",
+   "https://happypaw.ua/ua/zoo-organization/15268",
+   "https://gladpet.org/pets;organization_id=245"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/15268",
+  "notes": "~200 котів."
+ },
+ {
+  "name": "Приватний притулок «Кицюня»",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 67 363 3300",
+  "links": [
+   "https://www.instagram.com/priyut_kitsyna/",
+   "https://www.facebook.com/profile.php?id=100081184149195"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/16116",
+  "notes": "~187 котів і 36 собак."
+ },
+ {
+  "name": "Незламні. Херсон (ГО)",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 50 149 9977",
+  "links": [
+   "https://happypaw.ua/ua/zoo-organization/12387"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/12387",
+  "notes": "Херсонська організація, зараз у Києві; ~90 котів."
+ },
+ {
+  "name": "Cats On Mars (Котомарс)",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 63 242 4161",
+  "links": [
+   "https://www.instagram.com/catsonmars_ukraine/",
+   "https://www.facebook.com/catsonmarsukraine"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/19452",
+  "notes": "Котів з прифронтових зон; власний притулок у процесі створення, тварини на перетримках."
+ },
+ {
+  "name": "Притулок для котів «Мурчики»",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 63 731 1130",
+  "links": [
+   "https://www.instagram.com/murchiki_ua/",
+   "https://t.me/murchiki_ua",
+   "https://www.facebook.com/profile.php?id=100083108840183",
+   "https://linktr.ee/murchiki_ua"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка Monobank",
+    "value": "https://send.monobank.ua/jar/3yTxc9fkRz"
+   }
+  ],
+  "source_url": "https://linktr.ee/murchiki_ua",
+  "notes": "Притулок для врятованих котів, у т.ч. із зон бойових дій."
+ },
+ {
+  "name": "Котоносики (кототабір, волонтерський проєкт)",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/kotonosyky/",
+   "https://linktr.ee/Kotonosyky",
+   "https://kotonosyky.web.app/"
+  ],
+  "fundraisers": [
+   {
+    "title": "Загальна підтримка",
+    "value": "https://send.monobank.ua/jar/5ijCk4PgJE"
+   },
+   {
+    "title": "Корм і догляд",
+    "value": "https://send.monobank.ua/jar/6vk8XebdPN"
+   },
+   {
+    "title": "Лікування",
+    "value": "https://send.monobank.ua/jar/4Rtf6EPzn6"
+   },
+   {
+    "title": "Оренда приміщення",
+    "value": "https://send.monobank.ua/jar/4PHBsSViGx"
+   }
+  ],
+  "source_url": "https://www.instagram.com/kotonosyky/",
+  "notes": "Оболонь; 60+ підопічних котів."
+ },
+ {
+  "name": "Київські котики",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 50 906 7271",
+  "links": [
+   "https://www.instagram.com/kievskiekotiki/",
+   "https://gladpet.org/pets;organization_id=213"
+  ],
+  "fundraisers": [],
+  "source_url": "https://gladpet.org/pets;organization_id=213",
+  "notes": "100+ котів, у т.ч. із зони бойових дій. Активність — за оголошеннями на GladPet."
+ },
+ {
+  "name": "Київське товариство захисту тварин «Щасливий берег»",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 97 627 5276",
+  "links": [
+   "https://www.instagram.com/lucky.strand/",
+   "https://luckystrand.org.ua/",
+   "https://gladpet.org/pets;organization_id=303"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.instagram.com/lucky.strand/",
+  "notes": "З 2012 р., член OIPA."
+ },
+ {
+  "name": "БФ «12 Вартових»",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 98 210 3174",
+  "links": [
+   "https://www.instagram.com/12_guards/",
+   "https://www.facebook.com/12vartovykh",
+   "https://gladpet.org/pets;organization_id=328"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка Monobank",
+    "value": "https://send.monobank.ua/jar/4mspk674aS"
+   }
+  ],
+  "source_url": "https://www.instagram.com/12_guards/",
+  "notes": "~50 тварин на прилаштуванні (GladPet); формат бази (притулок/перетримки) не уточнено."
+ },
+ {
+  "name": "БФ «Адопт Донт Стоп» — Центр допомоги безхатнім тваринам",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://adoptdontstop.com/",
+   "https://www.instagram.com/adopt_dont_stop/",
+   "https://www.facebook.com/adoptdontstop/",
+   "https://linktr.ee/AdoptDontStop"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.instagram.com/adopt_dont_stop/",
+  "notes": "Центр допомоги безхатнім тваринам з 2021 р., програма стерилізації. Район м. Васильківська (за GladPet)."
+ },
+ {
+  "name": "БФ «Хвостаті» (Hvostati)",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/hvostatics/",
+   "https://t.me/vsrati_hvostati",
+   "https://gladpet.org/pets;organization_id=259"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка Monobank",
+    "value": "https://send.monobank.ua/jar/3mTxvPGJEN"
+   }
+  ],
+  "source_url": "https://www.instagram.com/hvostatics/",
+  "notes": "Прилаштування тварин з прифронтових територій; 700+ прилаштованих."
+ },
+ {
+  "name": "HelpAnimals UA (ГО)",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 67 528 3062",
+  "links": [
+   "https://www.instagram.com/help_animals_in_ua/",
+   "https://gladpet.org/pets;organization_id=317"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка Monobank",
+    "value": "https://send.monobank.ua/jar/7Jx3bo5Bw5"
+   }
+  ],
+  "source_url": "https://www.instagram.com/help_animals_in_ua/",
+  "notes": "Порятунок поранених тварин і тварин з інвалідністю з прифронтових зон."
+ },
+ {
+  "name": "БФ «ПітбульХелп»",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/pitbullhelp_official/",
+   "https://www.facebook.com/pithelp2016",
+   "https://gladpet.org/pets;organization_id=296"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.instagram.com/pitbullhelp_official/",
+  "notes": "Порятунок і прилаштування пітбулів і стафів."
+ },
+ {
+  "name": "БФ «Стріт Кетс» (Street Cats UA)",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 63 869 5353",
+  "links": [
+   "https://www.instagram.com/streetcats.ua/",
+   "https://www.facebook.com/streetcatsukraine/",
+   "https://linktr.ee/streetcats.ua"
+  ],
+  "fundraisers": [
+   {
+    "title": "На стерилізацію вуличних котиків",
+    "value": "https://send.monobank.ua/jar/78Bdkrxj3e"
+   },
+   {
+    "title": "Банка Monobank",
+    "value": "https://send.monobank.ua/jar/7MNxGW47Hs"
+   }
+  ],
+  "source_url": "https://www.instagram.com/streetcats.ua/",
+  "notes": "Перетримка, стерилізація і прилаштування; ~160 котів (Happy Paw)."
+ },
+ {
+  "name": "ГО «Хаскі Хелп Україна»",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://husky-help-ua.com/",
+   "https://www.instagram.com/husky_help_ukraine/",
+   "https://t.me/husky_help_ukraine"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.instagram.com/husky_help_ukraine/",
+  "notes": "Північні їздові собаки на перетримках у Києві; нових підопічних наразі не приймають."
+ },
+ {
+  "name": "9 життів (БО БФ, міні-притулок)",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 67 889 1513",
+  "links": [
+   "https://happypaw.ua/ua/zoo-organization/456"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/456",
+  "notes": "~65 котів і 10 собак. Активність — лише за оновленнями на Happy Paw."
+ },
+ {
+  "name": "Бастет (ГО Київська зоозахисна організація)",
+  "oblast": "kyiv",
+  "city": "Київ",
+  "address": null,
+  "phone": "+380 99 715 6329",
+  "links": [
+   "https://happypaw.ua/ua/zoo-organization/549"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/549",
+  "notes": "~60 котів. Активність — лише за оновленнями на Happy Paw."
+ },
+ {
+  "name": "ЛКП «Лев» — міський центр для тварин (адопція)",
+  "oblast": "lvivska",
+  "city": "Львів",
+  "address": "вул. Промислова, 56",
+  "phone": "+380 68 535 45 45",
+  "links": [
+   "https://lkplev.com",
+   "https://www.instagram.com/lkplev/",
+   "https://www.facebook.com/lvivlkplev"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/9952",
+  "notes": "Комунальний ветеринарно-стерилізаційний центр із центром адопції собак і котів."
+ },
+ {
+  "name": "Притулок для тварин «Милосердя» (Львівське товариство захисту тварин)",
+  "oblast": "lvivska",
+  "city": "смт Брюховичі",
+  "address": "вул. Незалежності України, 58",
+  "phone": "+380 93 658 78 20",
+  "links": [
+   "https://www.facebook.com/miloserdia.lviv/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/10082",
+  "notes": "Найстаріший притулок Львівщини (з 1992). На території лише собаки, коти — на перетримках. Старий домен miloserdia.com більше не належить притулку."
+ },
+ {
+  "name": "Дім Сірка Івано-Франківськ (БО БФ)",
+  "oblast": "ivano-frankivska",
+  "city": "Івано-Франківськ",
+  "address": null,
+  "phone": "+380 97 827 98 72",
+  "links": [
+   "https://www.facebook.com/groups/3544553825618540"
+  ],
+  "fundraisers": [],
+  "source_url": "https://firtka.if.ua/blog/view/u-pritulku-perebuvaiut-410-chotirilapikh-iak-v-ivano-frankivskomu-domi-sirka-prilashtovuiut-tvarin",
+  "notes": "Окрема організація від «Дім Сірка» у Калуші. Понад 400 тварин."
+ },
+ {
+  "name": "Притулок «Рудий пес» (БО)",
+  "oblast": "ivano-frankivska",
+  "city": "с. Старий Лисець",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [
+   {
+    "title": "Банка на потреби притулку",
+    "value": "https://send.monobank.ua/jar/5b3DtLXZvK"
+   },
+   {
+    "title": "Банка на корм",
+    "value": "https://send.monobank.ua/jar/7761jKuD44"
+   },
+   {
+    "title": "Банка на лікування",
+    "value": "https://send.monobank.ua/jar/9WN9LchTho"
+   }
+  ],
+  "source_url": "https://galka.if.ua/tse-ne-maie-buty-kontstabir-iak-pratsiuie-prytulok-dlia-pokynutykh-rudyy-pes-pid-frankivskom-foto/",
+  "notes": "Близько 100 собак і 5 котів під Івано-Франківськом. Банки взято зі статті про притулок (галка, 2024)."
+ },
+ {
+  "name": "Zachyn — центр адопції та підготовки тварин до людей (Zagoriy Foundation)",
+  "oblast": "ivano-frankivska",
+  "city": "Яремче",
+  "address": null,
+  "phone": "+380 73 640 58 68",
+  "links": [
+   "https://zachyn.org",
+   "https://www.instagram.com/zachyn.adoption/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://zachyn.org/",
+  "notes": "Центр адопції (раніше Varangian Dogs). Близько 45 тварин."
+ },
+ {
+  "name": "ГО «Дружня лапа» (м. Долина)",
+  "oblast": "ivano-frankivska",
+  "city": "Долина",
+  "address": null,
+  "phone": "+380 99 058 52 71",
+  "links": [
+   "https://www.facebook.com/frendlipaw/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/10001",
+  "notes": "За даними Happy Paw, під опікою 37 собак і 14 котів."
+ },
+ {
+  "name": "Центр адопції «Надія на дім» (Здолбунівський притулок)",
+  "oblast": "rivnenska",
+  "city": "Здолбунів",
+  "address": "вул. Шевченка (навпроти «Волинь-цементу»)",
+  "phone": "+380 66 413 29 28",
+  "links": [
+   "https://www.facebook.com/zahust.tvarun/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://rivne.rayon.in.ua/news/801569-u-zdolbunivskomu-pritulku-dlya-tvarin-vidbudetsya-den-vidkritikh-dverey",
+  "notes": "Понад 100 тварин, працює разом із Happy Paw. Проводять дні відкритих дверей."
+ },
+ {
+  "name": "Центр стерилізації тварин м. Рівне (rivne.animals.center)",
+  "oblast": "rivnenska",
+  "city": "Рівне",
+  "address": "вул. Київська, 100Г",
+  "phone": "+380 67 280 38 73",
+  "links": [
+   "https://www.instagram.com/rivne.animals.center/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.instagram.com/rivne.animals.center/",
+  "notes": "Близько 100 собак шукають дім. Запрошують волонтерів."
+ },
+ {
+  "name": "ГО «Мокрий носик» — тимчасовий притулок",
+  "oblast": "volynska",
+  "city": "Ківерці",
+  "address": "вул. Соборності, 1-А",
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://misto.media/news/5375-luchan-zaproshuiut-povolonteryty-u-prytulku-dlia-tvaryn",
+  "notes": "Тимчасовий притулок ГО «Мокрий носик» біля Луцька. Проводять волонтерські дні Paws Up!"
+ },
+ {
+  "name": "ГО «Спільний дім Луцьк»",
+  "oblast": "volynska",
+  "city": "Луцьк",
+  "address": null,
+  "phone": "+380 99 708 31 85",
+  "links": [
+   "https://www.instagram.com/sharedhomelutsk/",
+   "https://www.facebook.com/sharedhomelutsk/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/10071",
+  "notes": "Зоозахисна ГО: стерилізація, лікування, прилаштування. Власного притулку не підтверджено."
+ },
+ {
+  "name": "ГО «Барбос» (Ужгород)",
+  "oblast": "zakarpatska",
+  "city": "Ужгород",
+  "address": null,
+  "phone": "+380 67 400 17 50",
+  "links": [
+   "https://www.instagram.com/barbos_uzhgorod/",
+   "https://www.facebook.com/NGO.Barbos/"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка monobank",
+    "value": "https://send.monobank.ua/jar/5yG6VzeCPT"
+   }
+  ],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/9951",
+  "notes": "За даними їхнього Instagram, під опікою близько 185 собак і 50 котів."
+ },
+ {
+  "name": "PetCare — притулок для котів (Ужгород)",
+  "oblast": "zakarpatska",
+  "city": "Ужгород",
+  "address": null,
+  "phone": "+380 66 925 50 04",
+  "links": [
+   "https://petcareuzh.com",
+   "https://www.instagram.com/pet_care_uzh/"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка monobank",
+    "value": "https://send.monobank.ua/jar/85JcsBULdn"
+   }
+  ],
+  "source_url": "https://petcareuzh.com/",
+  "notes": "Близько 190 котів."
+ },
+ {
+  "name": "ГО «Animal Helpers» (Чернівці)",
+  "oblast": "chernivetska",
+  "city": "Чернівці",
+  "address": null,
+  "phone": "+380 50 547 94 04",
+  "links": [
+   "https://www.facebook.com/groups/1924912134462031/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/172",
+  "notes": "За даними Happy Paw, під опікою близько 50 тварин."
+ },
+ {
+  "name": "МКП «Центр стерилізації тварин» (Чернівці)",
+  "oblast": "chernivetska",
+  "city": "Чернівці",
+  "address": "вул. Південно-Кільцева, 47",
+  "phone": "+380 95 526 00 45",
+  "links": [
+   "https://alfachernivtsi.com",
+   "https://www.facebook.com/Alfa.Chernivtsi/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/chernivtsi/1165556-cogoric-u-cernivcah-na-vistavkah-prilastuvali-majze-20-bezpritulnih-sobak/",
+  "notes": "Комунальний центр. Тварин можна взяти щодня (пн–пт 9–15, сб–нд 9–12), проводять виставки-прилаштування."
+ },
+ {
+  "name": "Пункт тимчасового утримання безпритульних тварин Сторожинецької громади",
+  "oblast": "chernivetska",
+  "city": "Сторожинець",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://c4.com.ua/novyny/u-storozhinci-vidkrili-pritulok-dlya-bezpritulnix-tvarin-vin-rozraxovanij-na-130-sobak/",
+  "notes": "Муніципальний пункт на 130 собак, відкрито у квітні 2026."
+ },
+ {
+  "name": "Планета (БО Вінницький обласний БФ захисту тварин)",
+  "oblast": "vinnytska",
+  "city": "Вінниця",
+  "address": "Сабарівське шосе, 7",
+  "phone": "+380 96 269 2525",
+  "links": [
+   "https://www.facebook.com/groups/planeta.vinnitsa/",
+   "https://happypaw.ua/ua/zoo-organization/9990"
+  ],
+  "fundraisers": [],
+  "source_url": "https://vinnitsa.info/article/prytulky-dlya-tvaryn-u-vinnytsi-de-mozhna-prykhystyty-chotyrylapykh",
+  "notes": "Притулок для бездомних собак; у переліку притулків Вінниці (листопад 2025)"
+ },
+ {
+  "name": "Острівець — притулок домашнього типу",
+  "oblast": "vinnytska",
+  "city": "Вінниця",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/ostrivets_vn/"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка monobank",
+    "value": "https://send.monobank.ua/jar/2JfSyY74ho"
+   }
+  ],
+  "source_url": "https://vinnitsa.info/article/prytulky-dlya-tvaryn-u-vinnytsi-de-mozhna-prykhystyty-chotyrylapykh",
+  "notes": "Перетримка та лікування тварин"
+ },
+ {
+  "name": "Центр захисту тварин (КП Житомирської міської ради)",
+  "oblast": "zhytomyrska",
+  "city": "Житомир",
+  "address": "вул. Сергія Параджанова, 87",
+  "phone": "+380 412 55 00 20",
+  "links": [
+   "https://www.facebook.com/LoveAnimalsNiko",
+   "https://tvaryny.zt.ua/",
+   "https://happypaw.ua/ua/zoo-organization/9999"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/zhytomyr/964405-mozna-pogratisa-prinesti-smakoliki-a-zgodom-zabrati-dodomu-u-zitomiri-rozpocali-akciu-pet-mama/",
+  "notes": "Муніципальний центр: стерилізація, тимчасовий притулок, програма «Пет мама»; ~40 собак і 10 котів"
+ },
+ {
+  "name": "Дім котів (ГО)",
+  "oblast": "zhytomyrska",
+  "city": "Радомишль",
+  "address": null,
+  "phone": "+380 50 911 4672",
+  "links": [
+   "https://www.instagram.com/cathouse_radomyshl/",
+   "https://www.facebook.com/radomyshlanimals/",
+   "https://happypaw.ua/ua/zoo-organization/471"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка monobank",
+    "value": "https://send.monobank.ua/jar/6DwbNrfDcE"
+   }
+  ],
+  "source_url": "https://thegard.city/articles/451542/yak-dopomogti-pritulku-dim-kotiv",
+  "notes": "Близько 220 котів і кілька собак, зокрема евакуйовані з прифронтових міст"
+ },
+ {
+  "name": "Врятуй життя (ГО захисту тварин)",
+  "oblast": "khmelnytska",
+  "city": "Хмельницький",
+  "address": null,
+  "phone": "+380 68 202 1317",
+  "links": [
+   "https://instagram.com/savethelives",
+   "https://www.facebook.com/groups/rescuelife/",
+   "https://www.savealife.com.ua/",
+   "https://happypaw.ua/ua/zoo-organization/73"
+  ],
+  "fundraisers": [
+   {
+    "title": "Офіційний рахунок (IBAN)",
+    "value": "UA983052990000026004026003325"
+   }
+  ],
+  "source_url": "https://suspilne.media/khmelnytskiy/919469-u-hmelnickij-organizacii-vratuj-zitta-spovilnivsa-proces-prilastuvanna-tvarin/",
+  "notes": "Близько 200 собак і 50 котів; IBAN з офіційного Instagram"
+ },
+ {
+  "name": "Душа бродяги (ГО)",
+  "oblast": "khmelnytska",
+  "city": "Кам'янець-Подільський",
+  "address": null,
+  "phone": "+380 98 970 8099",
+  "links": [
+   "https://www.instagram.com/godushabrodiagi/",
+   "https://happypaw.ua/ua/zoo-organization/532"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка monobank",
+    "value": "https://send.monobank.ua/jar/4fc7Rm2vFs"
+   }
+  ],
+  "source_url": "https://happypaw.ua/ua/node/36399",
+  "notes": "Переважно старі, хворі та тварини з інвалідністю; ~48 собак, 33 коти"
+ },
+ {
+  "name": "Покинутий Ангел (ГО)",
+  "oblast": "khmelnytska",
+  "city": "Хмельницький",
+  "address": null,
+  "phone": "+380 97 221 5000",
+  "links": [
+   "https://www.instagram.com/prutylok_pokunytyu_angel/",
+   "https://happypaw.ua/ua/zoo-organization/15121"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/15121",
+  "notes": "Притулок для собак (~190), ЄДРПОУ 45097786"
+ },
+ {
+  "name": "Серце друга (Уманський БФ)",
+  "oblast": "cherkaska",
+  "city": "Умань",
+  "address": null,
+  "phone": "+380 73 058 9727",
+  "links": [
+   "https://www.instagram.com/uman_sertse_druha/",
+   "https://www.facebook.com/groups/995800037105435",
+   "https://www.sercedruga.com.ua/",
+   "https://happypaw.ua/ua/zoo-organization/540"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.sercedruga.com.ua/",
+  "notes": "~80 собак і 56 котів; безкоштовна стерилізація"
+ },
+ {
+  "name": "Life. Життя (Черкаський обласний БФ)",
+  "oblast": "cherkaska",
+  "city": "Черкаси",
+  "address": null,
+  "phone": "+380 98 482 8979",
+  "links": [
+   "https://www.instagram.com/charityfundlife/",
+   "https://www.facebook.com/CharityFundLife",
+   "https://dopomoga.pp.ua/",
+   "https://happypaw.ua/ua/zoo-organization/10020"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка monobank",
+    "value": "https://send.monobank.ua/jar/5t2EmeYuH5"
+   }
+  ],
+  "source_url": "https://dopomoga.pp.ua/",
+  "notes": "Працює з 2017 р.; лікування, перетримка, прилаштування"
+ },
+ {
+  "name": "ДоброКіт (БФ, котячий притулок «Котобудинок»)",
+  "oblast": "cherkaska",
+  "city": "Черкаси",
+  "address": null,
+  "phone": "+380 93 214 4145",
+  "links": [
+   "https://www.facebook.com/dobrokit/",
+   "https://dobrokit.org/",
+   "https://happypaw.ua/ua/zoo-organization/10102"
+  ],
+  "fundraisers": [],
+  "source_url": "https://cherkasy.info/article/yaki-prytulky-dlya-tvaryn-pratsyuyut-u-cherkasakh",
+  "notes": "Лише коти, 60–80 підопічних; дні відкритих дверей"
+ },
+ {
+  "name": "БІМ (Кіровоградська обласна організація захисту тварин)",
+  "oblast": "kirovohradska",
+  "city": "Кропивницький",
+  "address": "Бобринецьке шосе",
+  "phone": "+380 50 686 0092",
+  "links": [
+   "https://www.facebook.com/groups/bimkirovograd/",
+   "https://happypaw.ua/ua/zoo-organization/9961"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/kropyvnytskiy/1242298-pidtoplenna-pritulku-bim-u-kropivnickomu-200-sobak-cekaut-evakuacii/",
+  "notes": "~400 тварин; у 2026 р. підтоплення та загроза виселення через приватизацію приміщень — адреса може змінитися"
+ },
+ {
+  "name": "Щасливий пес (ГО)",
+  "oblast": "kirovohradska",
+  "city": "Кропивницький",
+  "address": null,
+  "phone": "+380 66 198 4542",
+  "links": [
+   "https://www.facebook.com/groups/happy.dog.ua/",
+   "https://happypaw.ua/ua/zoo-organization/9972"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/news/one/38332",
+  "notes": "Біля мікрорайону Нове; ~280 собак і ~16 котів; постраждав від повені у березні 2026"
+ },
+ {
+  "name": "Добре серце (міні-притулок)",
+  "oblast": "kirovohradska",
+  "city": "Кропивницький",
+  "address": null,
+  "phone": "+380 50 032 9581",
+  "links": [
+   "https://www.facebook.com/share/1CBNVXdzyM/",
+   "https://happypaw.ua/ua/zoo-organization/16112"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/node/36399",
+  "notes": "~208 собак і 65 котів"
+ },
+ {
+  "name": "Вдячна лапа (ГО)",
+  "oblast": "kirovohradska",
+  "city": "Новоукраїнка",
+  "address": null,
+  "phone": "+380 68 068 0218",
+  "links": [
+   "https://www.facebook.com/groups/vdiachnalapa/",
+   "https://happypaw.ua/ua/zoo-organization/564"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/node/38325",
+  "notes": "~25 собак і котячий будиночок, облаштований Happy Paw у 2026"
+ },
+ {
+  "name": "Дай лапу (ГО)",
+  "oblast": "kirovohradska",
+  "city": "Знам'янка",
+  "address": null,
+  "phone": "+380 99 677 0658",
+  "links": [
+   "https://www.facebook.com/groups/dailapuznamenka",
+   "https://happypaw.ua/ua/zoo-organization/452"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/node/36399",
+  "notes": "~57 собак і 43 коти"
+ },
+ {
+  "name": "Зоодопомога Олександрія",
+  "oblast": "kirovohradska",
+  "city": "Олександрія",
+  "address": null,
+  "phone": "+380 96 930 2981",
+  "links": [
+   "https://www.instagram.com/aleksandriazoohelp",
+   "https://www.facebook.com/share/1BVdHCev14/",
+   "https://happypaw.ua/ua/zoo-organization/16114"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/node/36399",
+  "notes": "~207 собак і 154 коти; стерилізували понад 9000 тварин"
+ },
+ {
+  "name": "Чотири лапи (ГО «ЦДІЗТ у Бобринецькому районі»)",
+  "oblast": "kirovohradska",
+  "city": "Бобринець",
+  "address": null,
+  "phone": "+380 99 055 1785",
+  "links": [
+   "https://www.facebook.com/groups/341968503259494/",
+   "https://happypaw.ua/ua/zoo-organization/10876"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/news/one/38388",
+  "notes": "Міні-притулок, ~130 собак і ~30 котів; 10 нових вольєрів у квітні 2026"
+ },
+ {
+  "name": "Притулок БО «БФ допомоги безпритульним тваринам»",
+  "oblast": "poltavska",
+  "city": "Полтава",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/poltava/1215820-ak-u-poltavi-pid-cas-moroziv-dogladaut-za-tvarinami/",
+  "notes": "Волонтерський притулок на ~1 га (колишня промбаза), ~200 тварин; офіційні соцмережі не підтверджено"
+ },
+ {
+  "name": "Кицькин дім «Мокрі носи» (ГО)",
+  "oblast": "poltavska",
+  "city": "Полтава",
+  "address": null,
+  "phone": "+380 95 355 6059",
+  "links": [
+   "https://www.instagram.com/mokruenosu/",
+   "https://www.facebook.com/mokruenosu",
+   "https://happypaw.ua/ua/zoo-organization/449"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка monobank",
+    "value": "https://send.monobank.ua/jar/2kAtrrTY5g"
+   }
+  ],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/449",
+  "notes": "Центр евакуації та адопції, працює з 2009 р."
+ },
+ {
+  "name": "В пошуках щастя (притулок)",
+  "oblast": "poltavska",
+  "city": "Полтава",
+  "address": null,
+  "phone": "+380 95 009 2447",
+  "links": [
+   "https://www.instagram.com/insearchofhappinesskhan",
+   "https://www.facebook.com/share/g/19fL6TgYKB/",
+   "https://happypaw.ua/ua/zoo-organization/15555"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка monobank",
+    "value": "https://send.monobank.ua/jar/77WVhW4e8Y"
+   }
+  ],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/15555",
+  "notes": "~28 собак і 42 коти"
+ },
+ {
+  "name": "Спецсервіс-Кременчук (КП, пункт перетримки тварин)",
+  "oblast": "poltavska",
+  "city": "Кременчук",
+  "address": "вул. Левка Лук'яненка, 48/75",
+  "phone": "+380 67 203 2197",
+  "links": [
+   "https://www.instagram.com/specservicekremenchuk/",
+   "https://www.facebook.com/groups/specservice.kremenchuk",
+   "https://priyutdog.wordpress.com/",
+   "https://happypaw.ua/ua/zoo-organization/510"
+  ],
+  "fundraisers": [],
+  "source_url": "https://kg.ua/news/kremenchuk-ta-regioni/bezpritulni-ale-ne-zabuti-u-kremenchuci-rahuyut-sobak-i-shukayut-koshti",
+  "notes": "Муніципальний пункт перетримки, ~147 собак і 44 коти (жовтень 2025); пн–пт 8:00–17:00"
+ },
+ {
+  "name": "Кременчуцькі хвостики (притулок домашнього типу)",
+  "oblast": "poltavska",
+  "city": "Кременчук",
+  "address": null,
+  "phone": "+380 50 017 7551",
+  "links": [
+   "https://happypaw.ua/ua/zoo-organization/16117"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/node/36399",
+  "notes": "~254 собаки і 78 котів"
+ },
+ {
+  "name": "Кохані безхатченки",
+  "oblast": "poltavska",
+  "city": "Кременчук",
+  "address": null,
+  "phone": "+380 96 097 8776",
+  "links": [
+   "https://www.facebook.com/groups/2802013773373887/",
+   "https://happypaw.ua/ua/zoo-organization/19453"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/news/one/33917",
+  "notes": "Переважно коти (~280) та кілька собак"
+ },
+ {
+  "name": "Пухнасті янголи (притулок)",
+  "oblast": "poltavska",
+  "city": "с. Піщане (Кременчуцький р-н)",
+  "address": null,
+  "phone": "+380 95 907 6156",
+  "links": [
+   "https://www.facebook.com/share/1BLibHVQBe/",
+   "https://happypaw.ua/ua/zoo-organization/19456"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/node/36399",
+  "notes": "~78 собак і 67 котів; приватний притулок у Піщаному згадано kg.ua (жовтень 2025)"
+ },
+ {
+  "name": "Право на життя (ГО, м. Лубни)",
+  "oblast": "poltavska",
+  "city": "Лубни",
+  "address": null,
+  "phone": "+380 50 972 6403",
+  "links": [
+   "https://www.facebook.com/groups/126345154601437",
+   "https://happypaw.ua/ua/zoo-organization/10091"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/node/36399",
+  "notes": "~60 собак і 120 котів"
+ },
+ {
+  "name": "Врятуйте наші душі (РГО по захисту прав тварин)",
+  "oblast": "poltavska",
+  "city": "Гадяч",
+  "address": null,
+  "phone": "+380 66 939 6311",
+  "links": [
+   "https://www.facebook.com/animalsgadyach2019/",
+   "https://happypaw.ua/ua/zoo-organization/10092"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/node/36399",
+  "notes": "~52 собаки і 89 котів"
+ },
+ {
+  "name": "КП «Центр поводження з тваринами» (Харківський міський притулок)",
+  "oblast": "kharkivska",
+  "city": "Харків",
+  "address": "просп. Аерокосмічний (кол. Гагаріна), 358",
+  "phone": "+380 800 50 43 13",
+  "links": [
+   "https://animals.kharkov.ua/",
+   "https://www.instagram.com/animals_kharkov/",
+   "https://www.facebook.com/animals.kharkov/",
+   "https://t.me/animals_kharkov_ua"
+  ],
+  "fundraisers": [
+   {
+    "title": "Пожертва притулку (WayForPay)",
+    "value": "https://secure.wayforpay.com/donate/d2009ecb27565"
+   }
+  ],
+  "source_url": "https://infocity.kharkiv.ua/obshchestvo/kharkivskyj-prytulok-dlia-tvaryn-pidbyv-pidsumky-roboty-u-2025-rotsi/",
+  "notes": "Муніципальний притулок, ~400–500 собак і ~100 котів; у 2025 прилаштовано понад 2400 тварин. Відвідування щодня 9:00–15:00. Додатковий тел. +380 67 920 79 04."
+ },
+ {
+  "name": "ГО «Порятунок тварин Харків» (Animal Rescue Kharkiv)",
+  "oblast": "kharkivska",
+  "city": "Харків",
+  "address": "вул. Спецпідрозділу Кракен (кол. Серпова), 4",
+  "phone": "+380 95 478 8878",
+  "links": [
+   "https://www.animalrescuekharkiv.org/",
+   "https://www.instagram.com/animal.rescue.kharkiv/",
+   "https://www.instagram.com/animalrescuekharkiv/",
+   "https://www.facebook.com/spt.kh/"
+  ],
+  "fundraisers": [
+   {
+    "title": "Monobank банка",
+    "value": "https://send.monobank.ua/jar/7ztCgZd8Ad"
+   }
+  ],
+  "source_url": "https://kharkiv.znaj.ua/565860-do-30-zayavok-na-dobu-harkivski-volonteri-vivozyat-iz-prifrontu-sobak-kotiv-i-navit-bichkiv",
+  "notes": "Евакуація тварин з прифронту; ветклініка, котячий реабцентр «Маленький принц» (вул. О. Олеся, 7) та притулок для собак. ~1500 собак і 300 котів шукають дім. Тел. порятунку з передової +380 99 313 8339."
+ },
+ {
+  "name": "ГО «Дім надії»",
+  "oblast": "kharkivska",
+  "city": "Харків",
+  "address": null,
+  "phone": "+380 50 691 6856",
+  "links": [
+   "https://www.instagram.com/dimnadii_go/",
+   "https://www.facebook.com/redcat.animalshelter/",
+   "https://happypaw.ua/ua/zoo-organization/12388"
+  ],
+  "fundraisers": [
+   {
+    "title": "Monobank банка",
+    "value": "https://send.monobank.ua/jar/3prCtJp65B"
+   }
+  ],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/12388",
+  "notes": "Порятунок, стерилізація та прилаштування тварин; учасник програми Purina/Happy Paw."
+ },
+ {
+  "name": "Домівка врятованих котів «MAKSIK»",
+  "oblast": "kharkivska",
+  "city": "Харків",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/rinakoshkina_priyut/",
+   "https://happypaw.ua/ua/zoo-organization/10104"
+  ],
+  "fundraisers": [
+   {
+    "title": "Monobank банка",
+    "value": "https://send.monobank.ua/jar/6R4HoX5XGc"
+   }
+  ],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/10104",
+  "notes": "Котячий міні-притулок, близько 100 котів. Активність 2026 — за Instagram, дату варто перевірити вручну."
+ },
+ {
+  "name": "Міні-притулок «Кіт під дахом» («Дім Надії»)",
+  "oblast": "kharkivska",
+  "city": "Харків",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/kot_podkrishey/",
+   "https://happypaw.ua/ua/zoo-organization/19672"
+  ],
+  "fundraisers": [
+   {
+    "title": "Monobank банка",
+    "value": "https://send.monobank.ua/jar/3VwMQwwGzz"
+   }
+  ],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/19672",
+  "notes": "За даними Happy Paw ~147 котів і 23 собаки. Активність 2026 — за Instagram, дату варто перевірити вручну."
+ },
+ {
+  "name": "Animal Guardians UA",
+  "oblast": "kharkivska",
+  "city": "Харків",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/animalguardiansua/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://novayagazeta.eu/articles/2025/08/24/dogs-of-war-en",
+  "notes": "Евакуація тварин із зон бойових дій Харківщини; власний притулок ~130 котів і ~15 собак."
+ },
+ {
+  "name": "БО «Animals 911 Ukraine»",
+  "oblast": "kharkivska",
+  "city": "Харків",
+  "address": "пл. Іподрому, 2 (колишні стайні іподрому)",
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/animals911ukraine/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.pravda.com.ua/eng/news/2024/06/06/7459520/",
+  "notes": "Волонтерський притулок на території Харківського іподрому (~400–500 собак, 70+ котів), евакуація тварин з прикордоння. Активність після 2024 не перевірена."
+ },
+ {
+  "name": "КП «Зооконтроль» (муніципальний пункт перетримки)",
+  "oblast": "dnipropetrovska",
+  "city": "Дніпро",
+  "address": "вул. Березинська, 60",
+  "phone": "+380 67 908 89 86",
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://nashemisto.dp.ua/2025/01/06/unikalnyi-zookontrol-iak-u-dnipri-riatuiut-tvaryn/",
+  "notes": "Комунальне підприємство Дніпровської міськради; приймає травмованих тварин, зокрема з зони бойових дій; адопція. Також тел. +380 68 828 22 55."
+ },
+ {
+  "name": "Притулок «Друг» (ГО Дніпровська міська організація захисту тварин «Друг»)",
+  "oblast": "dnipropetrovska",
+  "city": "Дніпро",
+  "address": null,
+  "phone": "+380 68 385 23 25",
+  "links": [
+   "https://www.facebook.com/priutdrug/",
+   "https://www.instagram.com/priut_drug_dnepr/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://dnepr.express/ua/post/de-v-dnipri-vzyati-tvarinu-z-pritulku-poradi-ta-umovi",
+  "notes": "Реабілітаційний центр і притулок; адреса не розголошується з міркувань безпеки."
+ },
+ {
+  "name": "Товариство захисту тварин «Ковчег»",
+  "oblast": "dnipropetrovska",
+  "city": "Дніпро",
+  "address": null,
+  "phone": "+380 95 485 41 54",
+  "links": [
+   "https://www.facebook.com/kovcheg.dnepr",
+   "https://www.instagram.com/ozzhkovcheg_dnepr/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://dnepr.express/ua/post/de-v-dnipri-vzyati-tvarinu-z-pritulku-poradi-ta-umovi",
+  "notes": "Евакуація тварин з гарячих точок; виставка-адопція на Європейській площі (Вт–Нд, 13–19)."
+ },
+ {
+  "name": "ДМГОЗТ «Вірність»",
+  "oblast": "dnipropetrovska",
+  "city": "Дніпро",
+  "address": null,
+  "phone": "+380 97 507 92 99",
+  "links": [
+   "https://www.facebook.com/VernostAnimalRescueDnepr/",
+   "https://www.instagram.com/vernost_dp_ua/"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка Monobank",
+    "value": "https://send.monobank.ua/jar/86ARLtXzWM"
+   }
+  ],
+  "source_url": "https://dnepr.express/ua/post/de-v-dnipri-vzyati-tvarinu-z-pritulku-poradi-ta-umovi",
+  "notes": "Утримує притулки для собак і котів, зоозахисна діяльність."
+ },
+ {
+  "name": "БО «Фонд Дніпро Енімалс» (Dnipro Animals)",
+  "oblast": "dnipropetrovska",
+  "city": "Дніпро",
+  "address": null,
+  "phone": "+380 96 660 18 17",
+  "links": [
+   "https://www.facebook.com/dniproanimalsua/",
+   "https://www.instagram.com/dniproanimals/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://dnepr.express/ua/post/de-v-dnipri-vzyati-tvarinu-z-pritulku-poradi-ta-umovi",
+  "notes": "Прихисток на 300+ тварин."
+ },
+ {
+  "name": "Притулок «Улюблена дворняга»",
+  "oblast": "dnipropetrovska",
+  "city": "Дніпро",
+  "address": null,
+  "phone": "+380 98 863 35 44",
+  "links": [
+   "https://www.instagram.com/priyut_lyubimaia_dvorniaga/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/dnipro/928723-meskae-majze-1000-tvarin-pritulok-u-dnipri-prijmae-cotirilapih-z-prifrontovih-teritorij-istorii-sobak-z-mirnograda/",
+  "notes": "Близько 1000 собак і котів; приймає тварин з прифронтових територій (Мирноград та ін.)."
+ },
+ {
+  "name": "Притулок «Пегас» (ГО ТДК «Пегас»)",
+  "oblast": "dnipropetrovska",
+  "city": "Дніпро (околиці)",
+  "address": null,
+  "phone": "+380 97 593 81 81",
+  "links": [
+   "https://www.facebook.com/pegas.dp/",
+   "https://www.instagram.com/shelter_pegasus_dnipro/",
+   "https://t.me/pegas_rescue_animals_dnipro"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/dnipro/1064707-u-pritulku-dla-tvarin-na-dnipropetrovsini-buduut-korpus-dla-sobak-z-invalidnistu/",
+  "notes": "Сотні собак і котів, зокрема з інвалідністю; також коні та дикі тварини. У 2025 будували корпус для собак з інвалідністю (за підтримки UAnimals)."
+ },
+ {
+  "name": "БО БФ «Ми за право на життя»",
+  "oblast": "dnipropetrovska",
+  "city": "Дніпро",
+  "address": null,
+  "phone": "+380 73 235 03 70",
+  "links": [
+   "https://fond-umanchyk-olga.org/",
+   "https://www.instagram.com/fond_umanchyk_olga/",
+   "https://www.facebook.com/groups/FOND.Mi.za.pravo.na.zhizn"
+  ],
+  "fundraisers": [
+   {
+    "title": "Банка Monobank",
+    "value": "https://send.monobank.ua/jar/2SydLhyMBZ"
+   }
+  ],
+  "source_url": "https://fond-umanchyk-olga.org/",
+  "notes": "Фонд і притулок; екстрена ветдопомога та адопція."
+ },
+ {
+  "name": "Міні-притулок «Хвостики»",
+  "oblast": "dnipropetrovska",
+  "city": "Дніпро",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/dopo.mogadnipro_/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/468",
+  "notes": null
+ },
+ {
+  "name": "ГО «Вікно в життя»",
+  "oblast": "dnipropetrovska",
+  "city": "Дніпро",
+  "address": null,
+  "phone": "+380 99 122 87 77",
+  "links": [
+   "https://www.facebook.com/groups/268837914196087"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/462",
+  "notes": "Близько 55 собак і 29 котів (дані Happy Paw)."
+ },
+ {
+  "name": "Taliko — домашній притулок",
+  "oblast": "dnipropetrovska",
+  "city": "Новоолександрівка (Дніпровський р-н)",
+  "address": null,
+  "phone": "+380 68 970 89 00",
+  "links": [
+   "https://www.instagram.com/taliko_dp_animals/",
+   "https://www.facebook.com/profile.php?id=61583923622074"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/20572",
+  "notes": "Рятують, лікують, стерилізують і прилаштовують; також допомога птахам."
+ },
+ {
+  "name": "Притулок «Лада» (Бахмутське товариство захисту тварин, евакуйований з Бахмута)",
+  "oblast": "dnipropetrovska",
+  "city": "с. Вільне",
+  "address": null,
+  "phone": "+380 95 199 95 39",
+  "links": [
+   "https://www.facebook.com/apsLada/",
+   "https://www.instagram.com/aps_lada/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://bahmut.in.ua/my-ne-mayemo-prava-zupynyatysya-yak-zaraz-vyzhyvaye-bahmutskyj-prytulok-lada/",
+  "notes": "З вересня 2022 працює на Дніпропетровщині; понад 200 собак, приймає тварин з Донеччини."
+ },
+ {
+  "name": "КУ «Притулок для тварин» Кам'янської міської ради",
+  "oblast": "dnipropetrovska",
+  "city": "Кам'янське",
+  "address": "вул. Широка, 92",
+  "phone": "+380 63 631 28 79",
+  "links": [
+   "https://www.facebook.com/kamyanskiy.pritulok.dlya.tvarin/",
+   "https://www.instagram.com/pritylok_dlya_tvarin/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://kamenskoe.city/news/view/razom-zaradi-dobra-volonteri-ta-blagodijniki-u-kamyanskomu-pidtrimuyut-pritulok-dlya-tvarin-1",
+  "notes": "Комунальний притулок (відкрито 2020), близько 400 собак і 250 котів. Також тел. +380 67 386 38 29."
+ },
+ {
+  "name": "ГО КТЗТ «Вірний друг»",
+  "oblast": "dnipropetrovska",
+  "city": "Кам'янське",
+  "address": null,
+  "phone": "+380 96 359 24 27",
+  "links": [
+   "https://www.facebook.com/dogs.dndz",
+   "https://www.instagram.com/dogs_dndz/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/438",
+  "notes": "Кам'янське товариство захисту тварин; допомога безхатнім тваринам."
+ },
+ {
+  "name": "«Улюблені тварини»",
+  "oblast": "dnipropetrovska",
+  "city": "Кам'янське",
+  "address": null,
+  "phone": "+380 68 630 08 16",
+  "links": [
+   "https://www.facebook.com/FavoriteAnimals51901/",
+   "https://www.instagram.com/favorite_animals.ua/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/10073",
+  "notes": "Близько 46 собак і 18 котів (дані Happy Paw)."
+ },
+ {
+  "name": "Притулок-центр реабілітації «Надія» (ГО «Даруючи надію»)",
+  "oblast": "dnipropetrovska",
+  "city": "Павлоград",
+  "address": null,
+  "phone": "+380 99 016 20 29",
+  "links": [
+   "https://www.facebook.com/help.nadiya/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/9992",
+  "notes": "Близько 87 собак (дані Happy Paw)."
+ },
+ {
+  "name": "БО БФ «Котофеї»",
+  "oblast": "dnipropetrovska",
+  "city": "Нікополь",
+  "address": null,
+  "phone": "+380 66 532 51 92",
+  "links": [
+   "https://happypaw.ua/ua/zoo-organization/10155"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/10155",
+  "notes": "Котячий притулок, близько 128 котів (дані Happy Paw)."
+ },
+ {
+  "name": "Котодім «Best Friend» (ГО «Кращий друг»)",
+  "oblast": "dnipropetrovska",
+  "city": "Кривий Ріг",
+  "address": null,
+  "phone": "+380 67 569 30 55",
+  "links": [
+   "https://www.facebook.com/kotodomkr/",
+   "https://www.instagram.com/bestfriend_animal_kr/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/454",
+  "notes": "Близько 60 котів і 48 собак (за даними профілю)."
+ },
+ {
+  "name": "БО БФ «ФЕЯ, Дім врятованих тварин»",
+  "oblast": "dnipropetrovska",
+  "city": "Кривий Ріг",
+  "address": null,
+  "phone": "+380 96 139 90 43",
+  "links": [
+   "https://happypaw.ua/ua/zoo-organization/10848"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/10848",
+  "notes": "Близько 97 собак і 40 котів (дані Happy Paw)."
+ },
+ {
+  "name": "Leroy Shelter (Save Animals Ukraine)",
+  "oblast": "dnipropetrovska",
+  "city": "с. Обухівка",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/leroy_shelter/",
+   "https://www.instagram.com/saveanimals_ukraine/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.instagram.com/leroy_shelter/",
+  "notes": "Евакуація і перетримка тварин із зони бойових дій; відкрито влітку 2024."
+ },
+ {
+  "name": "Сумське товариство захисту тварин",
+  "oblast": "sumska",
+  "city": "Суми",
+  "address": null,
+  "phone": "+380 50 307 18 55",
+  "links": [
+   "https://animal-home.sumy.ua",
+   "https://www.facebook.com/sumy.animal.home"
+  ],
+  "fundraisers": [],
+  "source_url": "https://debaty.sumy.ua/news/72-pesiki-za-kordonom-pro-pidsumki-roboti-sumskih-pritulkiv-u-2025-rotsi",
+  "notes": "Понад 500 собак; у 2025 прилаштували 136 собак, прийняли 210+ тварин з прикордоння. Збір UAnimals на польові кухні (квітень 2026). Притулок на території колишнього аеродрому, адреса не уточнена."
+ },
+ {
+  "name": "DimPets (Дімпетс)",
+  "oblast": "sumska",
+  "city": "Суми",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/dimpets/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://debaty.sumy.ua/news/u-sumskomu-dimpets-pobilshalo-tvarin-yakih-zalishayut-cherez-viyizd-pritulok-pochav-prijmati-sobak",
+  "notes": "Котячий притулок вільного утримання (~100 котів, багато евакуйованих з прикордоння), також гризуни; з 2026 почав приймати собак."
+ },
+ {
+  "name": "Право на життя, Сумське товариство допомоги безпритульним тваринам",
+  "oblast": "sumska",
+  "city": "Суми",
+  "address": null,
+  "phone": "+380 99 497 38 27",
+  "links": [
+   "https://www.facebook.com/groups/right.to.life.sumy/",
+   "https://happypaw.ua/ua/zoo-organization/12462"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/12462",
+  "notes": "~45 собак і 40 котів (за даними Happy Paw)."
+ },
+ {
+  "name": "Друзі тварин, Конотопська зоозахисна організація",
+  "oblast": "sumska",
+  "city": "Конотоп",
+  "address": null,
+  "phone": "+380 68 070 07 08",
+  "links": [
+   "https://www.facebook.com/AnimalsFriendsKonotop/",
+   "https://happypaw.ua/ua/zoo-organization/517"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/sumy/742361-koli-ratuu-cergovu-ditinu-a-sasliva-zoozahisnica-z-sumsini-pro-svoih-pidopicnih-z-pritulku/",
+  "notes": "Притулок для ~90 собак, багато з інвалідністю; утримується на пожертви."
+ },
+ {
+  "name": "Котоукриття",
+  "oblast": "sumska",
+  "city": "Конотоп",
+  "address": null,
+  "phone": "+380 98 319 66 53",
+  "links": [
+   "https://www.instagram.com/kotoukryttia/",
+   "https://www.facebook.com/profile.php?id=61584403862711",
+   "https://happypaw.ua/ua/zoo-organization/20614"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/20614",
+  "notes": "Близько 48 котів."
+ },
+ {
+  "name": "Добре серце. Шостка",
+  "oblast": "sumska",
+  "city": "Шостка",
+  "address": null,
+  "phone": "+380 99 538 81 01",
+  "links": [
+   "https://www.facebook.com/groups/936022373768453/",
+   "https://happypaw.ua/ua/zoo-organization/518"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/518",
+  "notes": "~68 собак і 42 коти (за даними Happy Paw)."
+ },
+ {
+  "name": "ВСЦ «Крок до тварин» (КП Чернігівської міської ради)",
+  "oblast": "chernihivska",
+  "city": "Чернігів",
+  "address": null,
+  "phone": "+380 63 573 60 20",
+  "links": [
+   "https://www.instagram.com/vsc_chernigiv/",
+   "https://www.facebook.com/profile.php?id=61558976505427",
+   "https://happypaw.ua/ua/zoo-organization/15366"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/chernihiv/889261-vigul-sosuboti-vteci-vid-dogladalnic-ta-posuk-novih-rodin-reportaz-z-centru-dla-tvarin-v-cernigovi/",
+  "notes": "Муніципальний ветеринарно-стерилізаційний центр на околиці Чернігова, фактично утримує ~270 собак і ~170 котів; волонтерські вигули по суботах, адопція."
+ },
+ {
+  "name": "Щаслива тварина",
+  "oblast": "chernihivska",
+  "city": "Ніжин",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/chernihiv/799743-u-nizini-goriv-pritulok-dla-tvarin-de-utrimuut-blizko-90-sobak/",
+  "notes": "ГО, притулок на ~80–90 собак; у липні 2024 постраждав від пожежі (тварини вціліли)."
+ },
+ {
+  "name": "БФ «Друг» (притулок/перетримка для тварин)",
+  "oblast": "donetska",
+  "city": "Краматорськ",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.facebook.com/groups/krmdrug/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/donbas/1312472-mi-boimosa-ne-vstignuti-ih-vivezti-volonteri-evakuuut-sobak-iz-peretrimki-u-kramatorsku/",
+  "notes": "Працює з 2011 р., ~136 собак (травень 2026). Через обстріли поступово евакуює собак у безпечніші регіони — статус локації варто перевіряти."
+ },
+ {
+  "name": "ГО «Дай шанс»",
+  "oblast": "donetska",
+  "city": "Слов'янськ",
+  "address": null,
+  "phone": "+380 50 912 2609",
+  "links": [
+   "https://www.facebook.com/groups/451498718331994",
+   "https://happypaw.ua/ua/zoo-organization/16111"
+  ],
+  "fundraisers": [],
+  "source_url": "https://slavinfo.dn.ua/novosti/novosti-slavyanska/pritulok-dlya-tvarin-daj-shans-u-slov-yansku-potrebue-terminovoji-pidtrimki/",
+  "notes": "Волонтерський притулок на околиці міста, ~160–200 собак; підтримується UAnimals."
+ },
+ {
+  "name": "Притулок «Ковчег» (Ковчег-Одеса)",
+  "oblast": "odeska",
+  "city": "Одеса",
+  "address": "вул. Наливна, 11",
+  "phone": "+380 98 248 66 75",
+  "links": [
+   "https://www.instagram.com/kovcheg_od_ua/",
+   "https://www.facebook.com/kovcheg.od.ua.new/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/odesa/1009875-v-odesi-proveli-den-vidkritih-dverej-u-pritulku-sukaut-novi-rodini-dla-kotiv-i-sobak/",
+  "notes": "Один з найбільших притулків Одеси: ~700 собак і ~100 котів; основна база за містом, міська локація на Наливній."
+ },
+ {
+  "name": "Animal SOS Odessa (ГО)",
+  "oblast": "odeska",
+  "city": "Одеса",
+  "address": null,
+  "phone": "+380 97 045 35 97",
+  "links": [
+   "https://www.instagram.com/animal.sos.odessa/",
+   "https://www.facebook.com/animalsosofficial/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/10070",
+  "notes": "Має центр адопції собак (у жовтні 2025 його підтопило зливою); 51 собака і 76 котів на опіці; програми стерилізації."
+ },
+ {
+  "name": "Притулок «Кошкин дім» (Кицькин дім)",
+  "oblast": "odeska",
+  "city": "Одеса",
+  "address": null,
+  "phone": "+380 96 290 47 83",
+  "links": [
+   "https://www.instagram.com/koshkin_dom_odessa/",
+   "https://www.facebook.com/KoshkinDomOdessa"
+  ],
+  "fundraisers": [],
+  "source_url": "https://od.vgorode.ua/ukr/news/dosuh_y_eda/a1258163-vizmi-vikhovantsja-jaki-pritulki-dlja-tvarin-je-v-odesi",
+  "notes": "Працює з 2005 р.; понад 60 котів і 50 собак. Згадується в огляді odesa.name від 22.01.2026."
+ },
+ {
+  "name": "Притулок «Одинокі серця»",
+  "oblast": "odeska",
+  "city": "Одеса",
+  "address": null,
+  "phone": "+380 99 569 94 71",
+  "links": [
+   "https://www.instagram.com/lonely_hearts_odessa/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/odesa/928627-pritulok-dla-tvarin-odinoki-serca-v-odesi-vidznaciv-patiricca-dnem-vidkritih-dverej/",
+  "notes": "Київський район Одеси; понад 600 котів і 18 собак; точну адресу повідомляють у соцмережах. У вересні 2026 р. допомагав сусідньому притулку «Люблячі серця»."
+ },
+ {
+  "name": "Притулок «Люблячі серця»",
+  "oblast": "odeska",
+  "city": "с. Великодолинське",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://24tv.ua/rosiya-vdarila-po-pritulku-odeshhini-yaki-naslidki_n3151135",
+  "notes": "Близько 136 собак і 48 котів. У ніч на 29.09.2026 постраждав від російського удару (загинули 13 тварин), але продовжує опікуватися тваринами; потребує допомоги."
+ },
+ {
+  "name": "Притулок «Зорко одно лишь сердце»",
+  "oblast": "odeska",
+  "city": "Одеса",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/zorkoserce/",
+   "https://www.facebook.com/priyut.sorko.serce"
+  ],
+  "fundraisers": [],
+  "source_url": "https://odessa-life.od.ua/uk/article-uk/city-uk/domashni-uljublenci-shukajut-domivku-shist-pritulkiv-dlja-tvarin-v-odesi",
+  "notes": "Працює з 2008 р.; станом на 2025 р. понад 50 котів і 10 собак. У джерелах наводять різні телефони, тому телефон не вказано."
+ },
+ {
+  "name": "Мініпритулок «Котячий теремок»",
+  "oblast": "odeska",
+  "city": "Одеса",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/koshkin_teremok/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://odessa-life.od.ua/uk/article-uk/city-uk/domashni-uljublenci-shukajut-domivku-shist-pritulkiv-dlja-tvarin-v-odesi",
+  "notes": "Мініпритулок для врятованих і покинутих котів; згадується в огляді odesa.name від 22.01.2026."
+ },
+ {
+  "name": "Притулок «Любов і Ласка»",
+  "oblast": "odeska",
+  "city": "Одеса",
+  "address": null,
+  "phone": "+380 93 635 73 50",
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://odesa.name/uk/eternal-4982-chotyry-lapy-j-mokryj-nis-top-7-odeskyh-prytulkiv-dlya-tvaryn",
+  "notes": "Відомості лише з огляду одеських притулків від 22.01.2026."
+ },
+ {
+  "name": "КОТЕдж — притулок-хоспіс для котів",
+  "oblast": "odeska",
+  "city": "с. Шабо",
+  "address": null,
+  "phone": "+380 73 135 03 14",
+  "links": [
+   "https://www.facebook.com/groups/520312278137391/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://akkermanika.org/wiki/%D0%9A%D0%9E%D0%A2%D0%95%D0%B4%D0%B6_(%D0%BF%D1%80%D0%B8%D1%82%D1%83%D0%BB%D0%BE%D0%BA)",
+  "notes": "Постійний дім для літніх, хронічно хворих тварин та тварин з інвалідністю; 80 котів і 40 собак (2022). Підтримує Animal SOS Odessa. Активність у 2025–2026 рр. не підтверджена."
+ },
+ {
+  "name": "Котячий притулок при жіночому монастирі",
+  "oblast": "odeska",
+  "city": "Одеса",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/odesa/1155890-pidkinuli-16-kotiv-za-odin-den-v-odesi-pri-monastiri-prihistili-sotni-pokinutih-kotiv/",
+  "notes": "Близько 250 котів: лікування, стерилізація, прилаштування. У джерелі згадано Telegram-канал «Кошки в монастыре Одесса», але посилання на нього не перевірене. Назву монастиря в джерелі не вказано."
+ },
+ {
+  "name": "КП «Муніципальний центр екологічної безпеки» (вольєри для безпритульних тварин)",
+  "oblast": "odeska",
+  "city": "Одеса",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://nikvesti.com/news/public/300733",
+  "notes": "Муніципальне утримання безпритульних тварин; у 2025 р. на капітальний ремонт вольєрів виділили 6,85 млн грн. Адресу не підтверджено."
+ },
+ {
+  "name": "КП ММР «Центр захисту тварин»",
+  "oblast": "mykolaivska",
+  "city": "Миколаїв",
+  "address": "вул. Образцова, 1/2 (пункт стерилізації: вул. Водопійна, 36/1)",
+  "phone": "+380 67 452 31 10",
+  "links": [
+   "https://www.zahysttvaryn.com/",
+   "https://www.instagram.com/kpmmrczt/",
+   "https://www.facebook.com/kp.mmr.czt2020/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.zahysttvaryn.com/",
+  "notes": "Муніципальний притулок: понад 130 тварин, щомісячні виставки-прилаштування; відвідування по суботах 09:00–13:00."
+ },
+ {
+  "name": "Мініпритулок «Балу»",
+  "oblast": "mykolaivska",
+  "city": "Миколаїв (Велика Корениха)",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/mykolaiv/947045-peretrimka-likuvanna-ta-sterilizacia-ak-v-mikolaevi-pracue-minipritulok/",
+  "notes": "Перетримка близько 40 собак; безкоштовна стерилізація безпритульних тварин."
+ },
+ {
+  "name": "Притулок «Сніжок»",
+  "oblast": "mykolaivska",
+  "city": "с. Галицинове",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://www.0512.com.ua/news/3875357/ak-pid-mikolaevom-zive-pritulok-akij-vratuvav-zitta-desatkam-tvarin-foto",
+  "notes": "Близько 110 собак і понад 30 котів; сімейний притулок під Миколаєвом."
+ },
+ {
+  "name": "Притулок «Щасливі хвостики»",
+  "oblast": "mykolaivska",
+  "city": "Миколаївська обл.",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/mykolaiv/732129-ih-pokinuli-gospodari-u-pritulku-v-mikolaivskij-oblasti-zive-ponad-200-tvarin/",
+  "notes": "Понад 140 котів і 91 собака; точний населений пункт у джерелі не вказано."
+ },
+ {
+  "name": "Притулок «Душа бродяги» (Souls of Tramp)",
+  "oblast": "mykolaivska",
+  "city": "с. Лупареве",
+  "address": null,
+  "phone": "+380 67 512 39 70",
+  "links": [
+   "https://www.instagram.com/soul_of_tramp/",
+   "https://www.facebook.com/pritulok.dla.tvarin.mikolaiv/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/16113",
+  "notes": "70 собак і 52 коти (HappyPaw); за даними gladpet.org — понад 160 тварин."
+ },
+ {
+  "name": "«Клубочок»",
+  "oblast": "mykolaivska",
+  "city": "Миколаїв",
+  "address": null,
+  "phone": "+380 99 026 30 40",
+  "links": [
+   "https://www.facebook.com/profile.php?id=100073356507485"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/10087",
+  "notes": "Близько 118 котів і 1 собака (HappyPaw)."
+ },
+ {
+  "name": "БФ «Новий Світ» (еко-ферма-притулок)",
+  "oblast": "mykolaivska",
+  "city": "с. Показне",
+  "address": null,
+  "phone": "+380 67 941 50 23",
+  "links": [
+   "https://www.instagram.com/eco_farm_new_world/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/19454",
+  "notes": "160 собак і 125 котів (HappyPaw)."
+ },
+ {
+  "name": "«Місто собак» (БФ «Без кордонів»)",
+  "oblast": "mykolaivska",
+  "city": "Миколаїв",
+  "address": null,
+  "phone": "+380 93 557 77 77",
+  "links": [
+   "https://www.facebook.com/groups/gorodcobak"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/501",
+  "notes": "Притулок для собак під Миколаєвом; підтверджено лише за профілем на HappyPaw."
+ },
+ {
+  "name": "ГО «Серце поруч»",
+  "oblast": "mykolaivska",
+  "city": "Миколаївська обл.",
+  "address": null,
+  "phone": "+380 66 563 96 05",
+  "links": [
+   "https://www.instagram.com/heart_next_to_you/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/20073",
+  "notes": "Населений пункт на HappyPaw не вказано."
+ },
+ {
+  "name": "Пункт тимчасового утримання тварин КП «Служба комунального господарства»",
+  "oblast": "mykolaivska",
+  "city": "Південноукраїнськ",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://nikvesti.com/news/public/311530-u-pivdennoukrayinsku-perevantazhenyy-prytylok-dlya-bezprytulnykh-tvaryn",
+  "notes": "Муніципальний пункт перетримки: близько 192 собак, переповнений, бракує персоналу."
+ },
+ {
+  "name": "Херсонський притулок для тварин «4 лапи» (ГО «ХТЗТ»)",
+  "oblast": "khersonska",
+  "city": "Херсон",
+  "address": null,
+  "phone": "+380 50 146 78 81",
+  "links": [
+   "https://www.instagram.com/4lapu_herson/",
+   "https://www.facebook.com/Kherson.Help.4paws/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/kherson/1047767-16-rokiv-turboti-istoria-hersonskogo-pritulku-dla-tvarin-cotiri-lapi/",
+  "notes": "Близько 700 котів і собак; працює під обстрілами, без державного фінансування."
+ },
+ {
+  "name": "Притулок «Шанс» (ГО «Шанс»)",
+  "oblast": "khersonska",
+  "city": "Херсон",
+  "address": null,
+  "phone": "+380 66 646 30 30",
+  "links": [
+   "https://www.facebook.com/shelterkherson/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://suspilne.media/kherson/986423-snaradi-rozrivalis-porad-odin-vluciv-u-voler-ak-pid-obstrilami-u-hersoni-vizivae-pritulok-dla-tvarin/",
+  "notes": "Близько 150 собак; притулок неодноразово потрапляв під обстріли, керівництво розглядало переїзд у безпечніший регіон — актуальну локацію варто уточнити."
+ },
+ {
+  "name": "Котячий притулок «Кіт Бегемот»",
+  "oblast": "khersonska",
+  "city": "Херсон",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://tut.kherson.ua/?p=41559",
+  "notes": "Працює з 2015 р.; близько 300 котів в орендованому будинку та квартирах. У травні 2025 р. постраждав від обстрілу."
+ },
+ {
+  "name": "Притулок для тварин МКП «Гарантія»",
+  "oblast": "khersonska",
+  "city": "Херсон",
+  "address": null,
+  "phone": null,
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://vgoru.org/novini/xersonskomu-pritulku-dlia-tvarin-peredbacili-kosti-na-oblastuvannia-ta-xarcuvannia-sobak",
+  "notes": "Муніципальний притулок Херсонської громади. Наприкінці 2024 р. та у вересні 2025 р. його переносили з «червоної» зони в безпечніше місце; адресу не оприлюднено."
+ },
+ {
+  "name": "Острів порятунку тварин України (Help Animals Ukraine)",
+  "oblast": "khersonska",
+  "city": "Херсон",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.facebook.com/help.animals.ukraine/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/563",
+  "notes": "Підтверджено лише за профілем на HappyPaw (картка тварини з фото від червня 2025 р.)."
+ },
+ {
+  "name": "Притулок «Дай лапу, друже» (ГО ПО захисту прав тварин)",
+  "oblast": "zaporizka",
+  "city": "Запоріжжя",
+  "address": null,
+  "phone": "+380 67 807 03 73",
+  "links": [
+   "https://day-lapu-drug.zp.ua",
+   "https://www.instagram.com/daylapu_/",
+   "https://www.facebook.com/groups/154469294662120/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.inform.zp.ua/uk/2026/02/22/357747_ne-mozhemo-vyyihaty-v-pole-chy-selo-yak-u-zaporizhzhi-vidnovlyuyut-prytulok-dlya-tvaryn",
+  "notes": "Близько 520 тварин; собаки в Запоріжжі, котобудинок — у с. Георгіївське. 6 лютого 2026 р. постраждав від обстрілу, триває відновлення."
+ },
+ {
+  "name": "«Кошкин дім» (Запоріжжя)",
+  "oblast": "zaporizka",
+  "city": "Запоріжжя",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/koshkin_domik_zp/",
+   "https://www.facebook.com/groups/309288645898786/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://uatv.ua/uk/vryatovani-z-liniyi-frontu-u-bagatopoverhivtsi-zaporizhzhya-oblashtuvaly-unikalnyj-prytulok-dlya-tvaryn-video/",
+  "notes": "Близько 650–700 котів і 50 собак в 11 квартирах багатоповерхівки; тварини переважно евакуйовані з прифронтових районів."
+ },
+ {
+  "name": "Служба захисту тварин Запоріжжя / притулок-карантин «Шанс»",
+  "oblast": "zaporizka",
+  "city": "Запоріжжя",
+  "address": null,
+  "phone": "+380 50 234 12 80",
+  "links": [
+   "https://www.facebook.com/groups/priutshans1/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/3102",
+  "notes": "Працює з 2010 р.; тимчасовий притулок-карантин для тварин, які потребують лікування. Керівництво Служби коментувало евакуацію тварин з фронту в березні 2026 р."
+ },
+ {
+  "name": "Мініпритулок «Лессі»",
+  "oblast": "zaporizka",
+  "city": "Запоріжжя",
+  "address": null,
+  "phone": null,
+  "links": [
+   "https://www.instagram.com/lessi_cats/",
+   "https://www.facebook.com/groups/205034073896255/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://www.inform.zp.ua/uk/2024/05/24/279846_de-v-zaporizhzhi-dopomagayut-bezprytulnym-tvarynam/",
+  "notes": "Понад 60 котів і 6 собак."
+ },
+ {
+  "name": "ГО «Хеппі Тейлз»",
+  "oblast": "zaporizka",
+  "city": "Запоріжжя",
+  "address": null,
+  "phone": "+380 68 550 37 41",
+  "links": [
+   "https://www.facebook.com/groups/291613312956747/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/15535",
+  "notes": "60 собак і 25 котів (HappyPaw)."
+ },
+ {
+  "name": "«Розбуди своє серце»",
+  "oblast": "zaporizka",
+  "city": "Запоріжжя",
+  "address": null,
+  "phone": "+380 66 472 03 90",
+  "links": [
+   "https://www.facebook.com/groups/978418363234539/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/19416",
+  "notes": "124 собаки і 69 котів (HappyPaw)."
+ },
+ {
+  "name": "ГО «Товариство захисту тварин «Альф»",
+  "oblast": "zaporizka",
+  "city": "с. Наталівка",
+  "address": null,
+  "phone": "+380 66 862 24 33",
+  "links": [
+   "https://www.facebook.com/groups/555715536265533/"
+  ],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/19415",
+  "notes": "75 собак і 45 котів (HappyPaw)."
+ },
+ {
+  "name": "«Дог Лайф»",
+  "oblast": "zaporizka",
+  "city": "Запоріжжя",
+  "address": null,
+  "phone": "+380 96 604 22 32",
+  "links": [],
+  "fundraisers": [],
+  "source_url": "https://happypaw.ua/ua/zoo-organization/8655",
+  "notes": "36 собак і 116 котів (HappyPaw)."
+ }
+]

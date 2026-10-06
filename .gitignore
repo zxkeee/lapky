@@ -1,6 +1,45 @@
-__pycache__/
-*.pyc
+# --- секрети ---
 .env
-data/
+.env.*
+!.env.example
+
+# --- дані (база, бекапи, кеші імпорту) ---
+# лише коренева data/; scripts/data/ з набором притулків комітиться
+/data/
+*.db
+*.db-journal
+*.db.bak*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
 .venv/
+venv/
+env/
+build/
+dist/
+
+# --- тести й інструменти ---
 .pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# --- IDE ---
+.idea/
+.vscode/
+*.swp
+
+# --- ОС ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- логи ---
+*.log
+
+# --- матеріали захисту (презентації тощо) не зберігаємо в репозиторії ---
+*.pdf
+*.pptx
